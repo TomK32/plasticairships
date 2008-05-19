@@ -1,0 +1,21 @@
+<% 
+if Goldberg.menu
+   menu = Goldberg.menu.get_menu(level)
+   if menu
+%>
+<ul<%= if class_attr then " class=\"#{class_attr}\"" end%>>
+  <% for item_id in menu do 
+       item = Goldberg.menu.get_item(item_id)
+       selected = Goldberg.menu.selected?(item.id)%>
+  <li<%= if selected then ' class="selected"' end %>>
+    <a href="/menu/<%= item.name %>"><%= item.label %></a>
+    <%= if selected and depth > 0 
+	  render :file => "#{RAILS_ROOT}/vendor/plugins/goldberg/app/views/goldberg/menu_items/_menubar.rhtml", :use_full_path => false, :locals => {:level => level + 1, :depth => depth - 1,
+		        :class_attr => class_attr }
+        end %>
+  </li>
+  <% end %>
+</ul>
+<% 
+   end
+end %>

@@ -1,0 +1,53 @@
+<%= error_messages_for 'user' %>
+
+<table>
+
+<tr>
+<th>Userid (screen name) </th>
+<td><%= text_field 'user', 'name'  %></td>
+</tr>
+
+<tr>
+<th> Full name (real) </th>
+<td><%= text_field 'user', 'fullname'  %></td>
+</tr>
+
+<tr>
+<th> Email Address </th>
+<td><%= text_field 'user', 'email'  %></td>
+</tr>
+
+<% if not @self_reg -%>
+<tr>
+<th> Role </th>
+<td> <%= collection_select 'user', 'role_id', @roles, :id, :name %> </td>
+</tr>
+
+<tr>
+<th> Registration Confirmation <br />Required </th>
+<td><%= check_box 'user', 'self_reg_confirmation_required' %></td>
+
+<tr>
+<th> Start Path </th>
+<td><%= text_field 'user', 'start_path' %></td>
+</tr>
+<% end -%>
+
+<% if @password_change -%>
+<tr>
+<th> Old Password </th>
+<td> <%= password_field 'user', 'old_password' %> </td>
+</tr>
+<% end -%>
+
+<tr>
+<th> <% if @password_change then %> New <% end %>Password </th>
+<td> <%= password_field 'user', 'clear_password' %> </td>
+</tr>
+
+<tr>
+<th> Confirm Password </th>
+<td> <%= password_field 'user', 'confirm_password' %> </td>
+</tr>
+
+</table>

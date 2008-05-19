@@ -1,0 +1,15 @@
+<% if Goldberg.user -%>
+<p> User:&nbsp;<%= h(Goldberg.user.name) %></p>
+<% form_tag :controller => 'goldberg/auth', :action => 'logout' do -%>
+  <p><%= submit_tag "Logout" %></p>
+<% end -%>
+
+<% else -%>
+<p> <%= link_to "Login", :controller => 'goldberg/auth', 
+          :action => 'login' %>
+<% if Goldberg.settings.self_reg_enabled -%>
+| <%= link_to "Register", :controller => 'goldberg/users', 
+        :action => 'self_register' %>
+<% end -%>
+</p>
+<% end -%>

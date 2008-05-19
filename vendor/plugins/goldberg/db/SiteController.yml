@@ -1,0 +1,61 @@
+--- 
+- !ruby/object:Goldberg::SiteController 
+  attributes: 
+    name: goldberg/content_pages
+    permission_id: "1"
+    id: "1"
+    builtin: "1"
+- !ruby/object:Goldberg::SiteController 
+  attributes: 
+    name: goldberg/controller_actions
+    permission_id: "1"
+    id: "2"
+    builtin: "1"
+- !ruby/object:Goldberg::SiteController 
+  attributes: 
+    name: goldberg/auth
+    permission_id: "1"
+    id: "3"
+    builtin: "1"
+- !ruby/object:Goldberg::SiteController 
+  attributes: 
+    name: goldberg/menu_items
+    permission_id: "1"
+    id: "5"
+    builtin: "1"
+- !ruby/object:Goldberg::SiteController 
+  attributes: 
+    name: goldberg/permissions
+    permission_id: "1"
+    id: "6"
+    builtin: "1"
+- !ruby/object:Goldberg::SiteController 
+  attributes: 
+    name: goldberg/roles
+    permission_id: "1"
+    id: "7"
+    builtin: "1"
+- !ruby/object:Goldberg::SiteController 
+  attributes: 
+    name: goldberg/site_controllers
+    permission_id: "1"
+    id: "8"
+    builtin: "1"
+- !ruby/object:Goldberg::SiteController 
+  attributes: 
+    name: goldberg/system_settings
+    permission_id: "1"
+    id: "9"
+    builtin: "1"
+- !ruby/object:Goldberg::SiteController 
+  attributes: 
+    name: goldberg/users
+    permission_id: "1"
+    id: "10"
+    builtin: "1"
+- !ruby/object:Goldberg::SiteController 
+  attributes: 
+    name: goldberg/roles_permissions
+    permission_id: "1"
+    id: "11"
+    builtin: "1"

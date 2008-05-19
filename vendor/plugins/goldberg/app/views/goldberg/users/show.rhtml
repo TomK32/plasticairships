@@ -1,0 +1,33 @@
+<h1>User: <%= h @user.name %></h1>
+
+<table>
+
+<tr><th>Full Name:</th>
+<td><%= h @user.fullname %></td>
+</tr>
+
+<tr><th>Email Address:</th>
+<td><%= h @user.email %></td>
+</tr>
+
+<% if not @self_reg -%>
+<tr><th>Role:</th>
+<td><%= link_to @role.name, :controller => 'roles',
+        :action => 'show', :id => @role.id %></td>
+</tr>
+
+<tr><th>Start Path:</th>
+<td> <%= h @user.start_path %></td>
+</tr>
+<% end -%>
+
+</table>
+
+<hr/>
+<p><%= link_to 'Edit', :action => (@self_reg ? 'self_edit' : 'edit'), :id => @user %> 
+<% if not @self_reg -%>
+| <%= link_to 'Delete', {:action => 'destroy', :id => @user}, 
+    :confirm => 'Delete this user?', :method => 'post' %> </p>
+
+<p><%= link_to 'Back', :action => 'list' %> to Users list</p>
+<% end -%>

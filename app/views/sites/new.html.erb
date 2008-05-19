@@ -1,0 +1,12 @@
+<% @page_title = 'Add a new site' %>
+
+<%= error_messages_for :site %>
+
+<% form_for(@site) do |f| %>
+  <%= render :partial => 'form' , :locals => {:f => f} %
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', sites_path %>

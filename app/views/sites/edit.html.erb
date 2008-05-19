@@ -1,0 +1,13 @@
+<% @page_title = 'Edit site' %>
+
+<%= error_messages_for :site %>
+
+<% form_for(@site) do |f| %>
+  <%= render :partial => 'form' , :locals => {:f => f} %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @site %> |
+<%= link_to 'Back', sites_path %>
