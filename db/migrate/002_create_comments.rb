@@ -5,7 +5,7 @@ class CreateComments < ActiveRecord::Migration
       t.column :parent_comment_id, :integer
       t.column :title, :string      
       t.column :body, :text, :null => false
-      t.column :user_id, :integer, :null => false
+      t.column :user_id, :integer
       t.column :user_email, :string
       t.column :user_website, :string
       t.column :published, :boolean, :default => false
