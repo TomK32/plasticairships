@@ -2,7 +2,7 @@
 
 <%= error_messages_for :post %>
 
-<% form_for(:post, @post, :url => invoices_url) do |f| %>
+<% form_for(:post, @post, :url => posts_url) do |f| %>
   <%= render :partial => "form", :locals => {:f => f} %>
   <p>
     <%= f.submit "Create" %>
