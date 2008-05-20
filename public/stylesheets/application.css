@@ -403,7 +403,8 @@ ul.item_list li a:hover span.comment_count {
 
 /* all forms */
 form {
-	background-color:#B3DFE8;
+/*	background-color:#B3DFE8;
+	*/
 	padding:0.3em 1em 1em 1em;
 	margin: 2em 15px 0.3em 0px;
 	color:#286180;
@@ -421,27 +422,6 @@ form#logout input {
 	margin: 0;
 	padding: 0;
 }
-form p.captcha {
-		border:1px solid #A4A471;
-		background-color:#FF9;
-		padding:0.5em 1em ;
-		text-align:center;
-}
-
-form p.captcha label {
-		text-transform:none;
-		font-size:1em;
-		margin-bottom:0.5em;
-		color:#62562A;
-}
-
-form p.captcha input {
-	margin:0.5em auto;
-	width:140px;
-	color:#C66;
-	display:block;
-}
-
 form input[type="text"] {
 	font-size:1.2em;
 	color:#286180;
@@ -487,14 +467,12 @@ form a.button {
 form label {
 	margin-top:0.3em;
 	margin-bottom:0px;
-	font-size:0.8em;
 	display:block;
 	text-transform:uppercase;
 }
 
 form label.inline {
 	margin-right:0.3em;
-	font-size:0.8em;
 	display:inline;
 }
 
