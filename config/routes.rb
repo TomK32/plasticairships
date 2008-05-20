@@ -1,9 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :sites
+  map.resources :sites, :has_many => :comments
+  map.resources :site_comments, :controller => 'site/comments'
 
-  map.resources :comments
+  map.resources :posts, :has_many => :comments, :member => {:permalink => :get }
 
-  map.resources :posts
+  map.post_permalink 'blog/:year/:month/:day/:permalink', :controller => "posts", :action => "show"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
 

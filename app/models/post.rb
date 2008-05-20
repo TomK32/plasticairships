@@ -2,7 +2,25 @@ class Post < ActiveRecord::Base
   has_many :comments
   belongs_to :user
 
-  def self.find_published_posts(*args)
-    find(:all, :conditions => ['published = ? AND published_at < ?', true, Time.now], *args)    
+  attr_protected :user_id, :published
+
+  def self.find_published_posts(limit = 10)
+    find(:all, :conditions => ['posts.published = ? AND posts.published_at < ?', true, Time.now],
+      :order => 'published_at DESC', :limit => limit)   
+  end
+  
+  def self.find_by_date_and_permalink(year, month, day, permalink)
+    date = Date.civil(year, month, day)
+    self.find(:first, :conditions => ["posts.published_at < ? AND posts.published_at > ? AND posts.permalink", date.beginning_of_day, date.end_of_day, permalink])
+  end
+  
+  def year
+    published_at.year
+  end
+  def month
+    published_at.month
+  end
+  def day
+    published_at.day
   end
 end

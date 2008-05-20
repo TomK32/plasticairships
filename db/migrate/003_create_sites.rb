@@ -4,7 +4,7 @@ class CreateSites < ActiveRecord::Migration
       t.column :title, :string, :null => false
       t.column :url, :string, :null => false
       t.column :owner, :string, :null => false
-      t.column :descripion, :text, :null => false
+      t.column :description, :text, :null => false
       t.column :user_id, :integer, :null => false
       
       t.timestamps

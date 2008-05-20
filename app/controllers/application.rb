@@ -3,10 +3,13 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
+  require 'goldberg_user_extensions'
 
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => 'be0b8abf32b3136b823fb29169cd06e8'
   
   layout 'application'
+  
+  helper_method :current_user, :logged_in?
 end
