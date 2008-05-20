@@ -11,6 +11,10 @@ a {
 	color:#B3DFE8;	
 
 	}
+
+a img {
+	border: none;
+}
 	
 a.button {
 	color:#51732B;
@@ -84,8 +88,8 @@ p.options a:hover {
 }
 
 
-#header h1 {
-	font-size:1.4em;
+#header h1 a {
+	font-size:0.8em;
 	color:#286180;
 	display:block;
 	position:absolute;
@@ -164,16 +168,24 @@ h3 span.title a {
 }
 
 
-
-
-
-
-
 .error {
 	background-color:#E7FFA8;
 	color:#DB1600;
 	height:0px;
 	overflow:hidden;
+}
+
+
+/* right column */
+h3 {
+	padding: 0;
+}
+h3 a.plus {
+color:#51732B;
+padding:0;
+text-transform:uppercase;
+text-decoration: none;
+	
 }
 
 /* featured sites */
@@ -635,8 +647,8 @@ div.comment div.comment_text a {
 
 /* 	footer */
 
-div#footer {
-	clear:left;
+#footer {
+	clear:both;
 	padding-top:2.5em;
 	text-align: center;
 	margin:1.5em 25px;
