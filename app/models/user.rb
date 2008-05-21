@@ -4,7 +4,7 @@ class User < Goldberg::User
   has_many :comments
   
   def guest?
-    self_reg_confirmation_required.nil?    
+    self.role_id == GOLDBERG_ROLES[:guest]
   end
   def moderator?
     self.role_id == GOLDBERG_ROLES[:moderator] || self.admin?
