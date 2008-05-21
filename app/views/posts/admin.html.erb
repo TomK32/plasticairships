@@ -1,0 +1,7 @@
+<% @page_title = 'blog administration' %>
+
+<% @posts.each do |post| %>
+  <div id="post-<%= post.id%>"><%= link_to h(post.title), post %> by <%= link_to post.user.name, user_url(post.user_id) %> on <%= post.published_at.to_s(:long) %> is <%= 'not' unless post.published? %> published and has <%= pluralize(post.comments_count, 'comment') %><br />
+  <%= link_to 'edit', edit_post_url(post) %> | <%= link_to 'delete', post_url(post), {:method => :delete, :confirm => 'Sure you want to delete this?'} %>
+  </div>
+<% end %>

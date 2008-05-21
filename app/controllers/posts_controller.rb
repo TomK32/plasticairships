@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   end
   
   def admin
-    @posts = Post.find_published_posts(10)
+    @posts = Post.find_published_posts(25, params[:page])
   end
   
   def show

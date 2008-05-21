@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
   belongs_to :user
-  belongs_to :post
+  belongs_to :post, :counter_cache => true
   belongs_to :parent_comment, :class_name => 'Comment'
 
   attr_protected :post_id, :user_id, :published
