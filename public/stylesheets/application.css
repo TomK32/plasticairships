@@ -389,6 +389,8 @@ form {
 form#logout {
 	background-color: inherit;
 	color: inherit;
+	display: inline;
+	margin: 0;
 }
 
 form#logout input {
@@ -397,6 +399,7 @@ form#logout input {
 	display: inline;
 	margin: 0;
 	padding: 0;
+	color: white;
 }
 form input[type="text"] {
 	font-size:1.2em;
@@ -503,35 +506,30 @@ div.comment {
 	margin:0px 15px 1em 0px;
 }
 
-div.comment h3 {
-	border:0px;
-	padding:1.5em 0px 0px 85px;
-	margin:0px 0px 0.5em 0px;
-	color:#999;
-	}
-	
-div.comment h3 a, div.comment h3 a:hover, div.comment h3 span.author {
+
+/* meta */
+.meta .author, .meta .author a {
 	color:#CCFF42;
 	text-transform:none;
 	font-size:1em;
 	margin:0px;
 	padding:0px;
 	}		
-	
-div.comment p.avatar {
+
+.meta .gravatar {
 	float:left;
 	margin:0px 10px 5px 0px;
 	width:85px;
 	background:transparent url(/images/speach.gif) no-repeat right 13px;
 	}
 	
-div.comment p.avatar img {
+.meta .gravatar img {
 	padding:3px;
 	background-color:#DDD;
 	border-width:0px;
 	}
-	
-div.comment div.comment_text {
+
+div.comment div.body {
 	margin-left:85px;
 	padding:1em 1.5em;
 	background-color:#B3DFE8;
@@ -539,12 +537,12 @@ div.comment div.comment_text {
 	min-height:50px;
 	}
 
-div.comment div.comment_text p {
+div.comment div.body p {
 	color:#286180;
 	margin:0.3em 0px;
 }
 
-div.comment div.comment_text a {
+div.comment div.body a {
 	color:#286180;
 	text-decoration:underline;
 	}
