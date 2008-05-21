@@ -5,6 +5,7 @@ body {
 	padding:0px;
 	margin:0px;
 	line-height:160%;
+	color: white;
 }
 
 a {
@@ -108,17 +109,13 @@ h1 {
 	margin:0px;
 }
 
-h2.top {
-	padding:0px 0px 0.5em 0px;
-}
-
 h2 {
 	text-transform:capitalize;
 	font-size:1.3em;
 	height:1.5em;
 	color:#CCFF42;
 	margin:0px;
-	padding:1.5em 0px 0.5em 0px;
+	padding: 0 0px 0.5em 0px;
 }
 
 h1 a, h2 a, h3 a {
@@ -147,27 +144,6 @@ h3.dimmed {
 }
 	
 
-h3 a {
-	color:#B3DFE8;
-	font-size:10px;
-	margin-left:5px;
-	text-transform:uppercase;
-	font-weight:normal;
-	}
-
-
-h3 a:hover {
-	color:#FFF;
-	}
-
-h3 span.title a {
-	color:#CCFF42;
-	font-size:1em;
-	text-transform:none;
-	margin-left:0px;
-}
-
-
 .error {
 	background-color:#E7FFA8;
 	color:#DB1600;
@@ -179,13 +155,13 @@ h3 span.title a {
 /* right column */
 h3 {
 	padding: 0;
+	font-weight: bold;
 }
-h3 a.plus {
-color:#51732B;
-padding:0;
-text-transform:uppercase;
-text-decoration: none;
-	
+a.plus {
+	color:#CCFF42;
+	padding:0;
+	text-transform:uppercase;
+	text-decoration: none;
 }
 
 /* featured sites */
@@ -467,8 +443,7 @@ form a.button {
 form label {
 	margin-top:0.3em;
 	margin-bottom:0px;
-	display:block;
-	text-transform:uppercase;
+	vertical-align: text-bottom;
 }
 
 form label.inline {

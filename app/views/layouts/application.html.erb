@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 
 <head>
-<title><%= @page_title.blank? ? goldberg_title : ('%s // %s' % [@page_title, goldberg_title]) %></title>
+<title><%= @page_title.blank? ? Goldberg.settings.site_name : ('%s // %s' % [@page_title, Goldberg.settings.site_name]) %></title>
 
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 
@@ -37,16 +37,15 @@
 
 
 <div id="right">
-  <h3><%= link_to image_tag('plus.png', :alt => '+'), new_post_url(), :title => 'submit a new blog post', :class => "plus" %> Blog</h3>
+  <h3>Blog<%= link_to '++', new_post_url(), :title => 'submit a new blog post', :class => "plus" %></h3>
   <% cache('posts-sidebar') do %>
     <% if latest_posts.blank? %>
-      <p>No posts so far</p>
+    <p>No posts so far</p>
     <% else %>
-        <ul>
       <% latest_posts.each do |post| %>
-      <li><%= link_to post.title, post_url(@post) %></li>
+      <h4><%= link_to post.title, post_url(post) %></h4>
+      <%= textilize(post.excerpt) %>
       <% end %>
-      </ul>
       <%= link_to 'more blog posts', posts_url() %>
     <% end %>
   <% end %>
@@ -71,10 +70,10 @@
 
 <div id="footer">
 <ul>
-  <li><a href="#top">^</a></li>
+  <li><a href="#top">^ top</a></li>
   <li><a href="/">home</a></li>
-  <li><%= link_to formatted_posts_url(:format => :atom) %></li>
-  <li><%= link_to formatted_sites_url(:format => :atom) %></li>
+  <li><%= link_to 'RSS blog', formatted_posts_url(:format => :atom) %></li>
+  <li><%= link_to 'RSS sites', formatted_sites_url(:format => :atom) %></li>
   <li>powered with <a href="http://github.com/TomK32/plasticairships/" title="plasticairships is the software behind plasticpilots and best of all, it's open source!">plasticairships</a></li>
 </ul>  
 <%= Goldberg.settings.footer_message %>

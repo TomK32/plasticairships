@@ -41,21 +41,21 @@ table.table_as_list {
 }
 
 table.table_as_list tr.depth0 { 
-background: #e8e9ea;
+background: #111111;
 }
 table.table_as_list tr.depth0 td div.menu_title {
 margin-left: 0px;
 }
 
 table.table_as_list tr.depth1 { 
-background: #c8e9ea;
+background: #444444;
 }
 table.table_as_list tr.depth1 td div.menu_title {
 margin-left: 20px;
 }
 
 table.table_as_list tr.depth2 { 
-background: #e8c9ea;
+background: #777777;
 }
 table.table_as_list tr.depth2 td div.menu_title {
 margin-left: 40px;
