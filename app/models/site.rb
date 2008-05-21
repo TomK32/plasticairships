@@ -1,6 +1,7 @@
 class Site < ActiveRecord::Base
   attr_protected :user_id, :published
   has_many :comments
+  belongs_to :user
   
   validates_presence_of :title
   validates_presence_of :permalink
