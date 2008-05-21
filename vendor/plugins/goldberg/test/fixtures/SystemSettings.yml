@@ -1,0 +1,21 @@
+--- 
+- !ruby/object:Goldberg::SystemSettings 
+  attributes: 
+    session_expired_page_id: "2"
+    start_path: ""
+    session_timeout: "7200"
+    self_reg_enabled: "0"
+    menu_depth: "3"
+    site_default_page_id: "1"
+    self_reg_send_confirmation_email: "0"
+    self_reg_confirmation_required: "0"
+    site_url_prefix: http://localhost:3000/
+    permission_denied_page_id: "4"
+    id: "1"
+    self_reg_role_id: 
+    not_found_page_id: "3"
+    public_role_id: "1"
+    footer_message: A <a href="http://goldberg.rubyforge.org">Goldberg</a> site
+    site_name: Goldberg
+    self_reg_confirmation_error_page_id: "11"
+    site_subtitle: A website development tool for Ruby on Rails
