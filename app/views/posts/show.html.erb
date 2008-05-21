@@ -16,6 +16,6 @@
 <h3>New comment</h3>
 
 <% form_for :comment, @comment, :url => post_comments_url(@post), :method => :post do |f| %>
-  <%= render :partial => '/comments/form', :locals => {:f => f} %>
+  <%= render :partial => '/comments/form', :locals => {:f => f, :comments => @post.comments} %>
   <%= submit_tag 'Save comment' %>
 <% end %>

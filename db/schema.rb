@@ -9,19 +9,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 3) do
+ActiveRecord::Schema.define(:version => 7) do
 
   create_table "comments", :force => true do |t|
     t.integer  "post_id",                              :null => false
     t.integer  "parent_comment_id"
     t.string   "title"
     t.text     "body",                                 :null => false
-    t.integer  "user_id",                              :null => false
+    t.integer  "user_id"
     t.string   "user_email"
     t.string   "user_website"
     t.boolean  "published",         :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "type"
+    t.string   "user_name"
+    t.boolean  "subscribed",        :default => false
   end
 
   create_table "goldberg_content_pages", :force => true do |t|
@@ -134,6 +137,7 @@ ActiveRecord::Schema.define(:version => 3) do
     t.string   "confirmation_key"
     t.datetime "password_changed_at"
     t.boolean  "password_expired"
+    t.string   "website"
   end
 
   add_index "goldberg_users", ["role_id"], :name => "fk_user_role_id"
@@ -149,19 +153,22 @@ ActiveRecord::Schema.define(:version => 3) do
     t.text     "body",                            :null => false
     t.datetime "published_at",                    :null => false
     t.boolean  "published",    :default => false
+    t.string   "permalink",                       :null => false
     t.integer  "user_id",                         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "sites", :force => true do |t|
-    t.string   "title",      :null => false
-    t.string   "url",        :null => false
-    t.string   "owner",      :null => false
-    t.text     "descripion", :null => false
-    t.integer  "user_id",    :null => false
+    t.string   "title",                         :null => false
+    t.string   "url",                           :null => false
+    t.string   "owner",                         :null => false
+    t.text     "description",                   :null => false
+    t.integer  "user_id",                       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "comments_count", :default => 0
+    t.string   "permalink"
   end
 
 end

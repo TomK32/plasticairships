@@ -1,5 +1,11 @@
 <%= error_messages_for 'comment' %>
 
+<% unless comments.blank? %>
+<p><%= f.label :parent_comment, 'Parent comment' %><br />
+  <%= f.text_field :parent_comment %>
+</p>
+
+<% end %>
 <p><%= f.label :title, 'Title' %><br />
   <%= f.text_field :title %>
 </p>

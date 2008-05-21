@@ -28,7 +28,6 @@ class Post < ActiveRecord::Base
     published_at.day
   end
   def excerpt
-    puts self[:body][/.{1..50}\w*?/]
     return self[:body][/.{0,50}\w*?/] if self[:excerpt].blank?
     self[:excerpt]
   end

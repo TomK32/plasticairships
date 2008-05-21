@@ -1,0 +1,7 @@
+<div id="comment-<%= comment.id %>"
+  <h4><%= link_to h(comment.title), post_url(@post) + ('#comment-%d' % comment.id) %></h4>
+  <%= textilize(comment.body) %>
+  <div class="meta">
+    Comment by <%= comment.user_website ? link_to(comment.user_name, comment.user_website) : comment.user_name %> on <%= comment.created_at.to_s(:long) %>
+  </div>
+</div>

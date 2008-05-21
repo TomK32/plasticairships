@@ -40,7 +40,7 @@ class CommentsController < ApplicationController
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
         flash[:error] = 'Comment couldn\'t be created.'
-        format.html { render :action => "new" }
+        format.html { render :action => "../posts/show" }
         format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
       end
     end
