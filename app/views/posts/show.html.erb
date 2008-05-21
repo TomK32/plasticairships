@@ -1,7 +1,7 @@
 <% @page_title = @post.title %>
 
 <div class="meta">
-  Posted by <%= link_to h(@post.user.name), user_url(@post.user) %> on <%= @post.published_at.to_s(:long) %>. There are <%= link_to pluralize(@post.comments.count, 'Comment'), '#comments' %> so far.
+  Posted by <%= link_to h(@post.user.name), user_url(@post.user) %> on <%= @post.published_at.to_s(:long) %>.
 </div>
 <%= textilize(@post.body) %>
 

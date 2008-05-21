@@ -1,14 +1,11 @@
 <%= error_messages_for 'comment' %>
 
 <% unless comments.blank? %>
-<p><%= f.label :parent_comment, 'Parent comment' %><br />
-  <%= f.text_field :parent_comment %>
+<p><%= f.label :parent_comment_id, 'Parent comment' %><br />
+  <%= f.select :parent_comment_id, comments.collect{|c| [c.short_info, c.id] } %>
 </p>
 
 <% end %>
-<p><%= f.label :title, 'Title' %><br />
-  <%= f.text_field :title %>
-</p>
 
 <p><%= f.label :body, 'Your comment' %><br />
   <%= f.text_area :body, :rows => 10 %>

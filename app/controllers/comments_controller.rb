@@ -31,7 +31,10 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @post.comments.new(params[:comment])
-    @comment.user = current_user if current_user
+    if current_user
+      @comment.user = current_user
+      current_user.update_attributes(params[:comment][:user]) if current_user.guest?
+    end
 
     respond_to do |format|
       if @comment.save

@@ -5,7 +5,7 @@ class Comment < ActiveRecord::Base
 
   attr_protected :post_id, :user_id, :published
 
-  validates_presence_of :post_id, :body, :published
+  validates_presence_of :post_id, :body
 
   # caching :-)
   def before_validation
@@ -14,5 +14,9 @@ class Comment < ActiveRecord::Base
       self.user_email = user.email
       self.user_website = user.website
     end
+  end
+  
+  def short_info
+    "%s on %s: %s" % [self.user_name, self.created_at.to_s(:long), self.body[/.{0,40}\w*?/]]
   end
 end
