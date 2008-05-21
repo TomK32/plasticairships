@@ -36,7 +36,7 @@ class Site::CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         flash[:notice] = 'Comment was successfully created.'
-        format.html { redirect_to(site_permalink_path(@comment.site.permalink) + "#" + @comment.id)}
+        format.html { redirect_to(site_path(@site) + "#%d" % @comment.id)}
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
         flash[:error] = 'Comment couldn\'t be created.'
@@ -50,7 +50,7 @@ class Site::CommentsController < ApplicationController
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
         flash[:notice] = 'Comment was successfully updated.'
-        format.html { redirect_to(site_permalink_path(@comment.site.permalink) + "#" + @comment.id)}
+        format.html { redirect_to(site_path(@site) + "#%d" % @comment.id)}
         format.xml  { head :ok }
       else
         flash[:error] = 'Comment couldn\'t be updated.'
@@ -72,10 +72,10 @@ class Site::CommentsController < ApplicationController
   
   protected
   def current_site
-    @site = site.find(params[:site_id])
+    @site = Site.find(params[:site_id])
   end
 
   def current_comment
-    @comment = Comment.find(:first, :conditions => ['id = ? AND site_id = ?', params[:id], params[:site_id]], :include => :site)
+    @comment = Site::Comment.find(:first, :conditions => ['id = ? AND site_id = ?', params[:id], params[:site_id]], :include => :site)
   end
 end

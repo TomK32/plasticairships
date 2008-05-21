@@ -9,7 +9,7 @@ class SitesController < ApplicationController
   end
 
   def show
-    @site = Site.find(params[:id])
+    @site = Site.find(params[:id], :include => :comments)
 
     respond_to do |format|
       format.html # show.html.erb

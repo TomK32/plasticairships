@@ -1,3 +1,25 @@
-<% @page_title = 'Site %s' % @site.title %>
+<% @page_title = h(@site.title) %>
 
-<%= @site.description %>
+
+<div class="thumbnail"><%= link_to image_tag('sites/' + @site.thumbnail) %></div>
+
+<div class="meta">
+  posted by <%= link_to h(@site.user.name), user_url(@site.user) %> on <%= @site.created_at.to_s(:long) %>.
+</div>
+
+<div class="body"><%= textilize(@site.description) %></div>
+
+<div id="comments">
+<h3>Comments</h3>
+<% if @site.comments.empty? %>
+  <p>No comments so far</p>
+<% else %>
+  <%= render :partial => '/comments/comment', :collection => @site.comments %>
+<% end %>
+</div>
+<h3>New comment</h3>
+
+<% form_for :comment, @comment, :url => site_comments_url(@site), :method => :site do |f| %>
+  <%= render :partial => '/comments/form', :locals => {:f => f, :comments => @site.comments} %>
+  <%= submit_tag 'Save comment' %>
+<% end %>

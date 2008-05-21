@@ -1,0 +1,5 @@
+<% xm = Builder::XmlMarkup.new %>
+<%= xm.instruct! %>
+<% @sites.each do |site| %>
+<%= site.to_xml :except => [:url] %>
+<% end %>

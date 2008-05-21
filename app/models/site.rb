@@ -1,6 +1,6 @@
 class Site < ActiveRecord::Base
   attr_protected :user_id, :published
-  has_many :comments
+  has_many :comments, :class_name => 'Site::Comment', :foreign_key => 'post_id'
   belongs_to :user
   
   validates_presence_of :title

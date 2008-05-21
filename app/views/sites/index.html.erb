@@ -1,18 +1,11 @@
-<h1>Listing sites</h1>
+<% @page_title = 'featured sites' %>
 
-<table>
-  <tr>
-  </tr>
 
 <% for site in @sites %>
-  <tr>
-    <td><%= link_to 'Show', site %></td>
-    <td><%= link_to 'Edit', edit_site_path(site) %></td>
-    <td><%= link_to 'Destroy', site, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<div class="site" id="site-<%= site.id %>">
+  <h3><%= link_to h(site.title), site.url %></h3>
+  <p><%= textilize(site.description) %></p>
+  <%= link_to pluralize(site.comments_count, 'comment'), site %>
+</div>  
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'New site', new_site_path %>

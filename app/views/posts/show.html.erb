@@ -10,7 +10,7 @@
 <% if @post.comments.empty? %>
   <p>No comments so far</p>
 <% else %>
-  <%= render :partial => 'comment', :collection => @post.comments %>
+  <%= render :partial => '/comments/comment', :collection => @post.comments %>
 <% end %>
 </div>
 <h3>New comment</h3>
