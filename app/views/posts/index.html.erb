@@ -1,18 +1,5 @@
-<h1>Listing posts</h1>
+<% @page_title = 'Blog' %>
 
-<table>
-  <tr>
-  </tr>
+<%= link_to 'Submit a new post', new_post_path %>
 
-<% for post in @posts %>
-  <tr>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New post', new_post_path %>
+<%= render :partial => 'post', :collection => @posts %>

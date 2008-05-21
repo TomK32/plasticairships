@@ -1,11 +1,29 @@
 <%= error_messages_for 'post' %>
 
-<p><label for="post_title">Title</label><br/>
-<%= f.text_field 'title'  %></p>
-<p><label for="post_excerpt">Excerpt</label><br/>
-<%= f.text_field 'excerpt'  %></p>
-<p><label for="post_body">Body</label><br/>
-<%= f.text_area 'body'  %></p>
-<p><label for="post_published_at">Published at</label><br/>
-<%= f.datetime_select 'published_at'  %></p>
-<p><%= f.check_box 'published'  %> <label for="post_published">Published</label></p>
+<p><%= f.label :title, 'Title' %><br />
+  <%= f.text_field :title %>
+</p>
+<p><%= f.label :excerpt, 'Excerpt (not required)' %><br />
+  <%= f.text_area :excerpt, :rows => 3 %>
+</p>
+<p><%= f.label :body, 'Body (you can use textilize as markup in your post)' %> <br />
+  <%= f.text_area :body %>
+</p>
+<p><%= f.label :published_at, 'Publish post at' %><br />
+  <%= f.datetime_select :published_at %>
+</p>
+<p>
+  <%= f.check_box :published %> <%= f.label :published, 'Post is published' %>
+</p>
+
+<% unless logged_in? %>
+<p>You are not logged in but if you already have an account, you may <%= link_to 'login', login_url %> first. If you don't have an account yet, you can type in your email address and <em>we will create an account for you</em>. If you want to use <strong>OpenID</strong> you can <%= link_to 'signup', signup_url %>.</p>
+<% fields_for :user do |fu| %>
+<p><%= fu.label :name, 'Name' %><br />
+  <%= fu.text_field :name %>
+</p>
+<p><%= fu.label :email, 'E-Mail' %><br />
+  <%= fu.text_field :email %>
+</p>
+<% end %>
+<% end %>
