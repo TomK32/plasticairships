@@ -14,6 +14,12 @@ as well. Just think of a Mediawiki or Wordpress.
 The main features of plasticairships are a blog, showcases (only websites for now), and in
 near future some upload functionality (in the special case of plasticpilots with will be open content vector graphic, think OCAL, just more sophisticated)
 
+A principal design idea is to allow visitors creating content as easy as possible.
+Requiring an account and login is one of the biggest obstacle and plasticairship tries
+to avoid those. That means you don't need an accout to suggest a new blog post or site,
+only thing is a moderator that needs to publish the user generated content. The underlying
+Goldberg CMS features custom user roles which is a great advantage for this purpose.
+
 === Version History
 no release yet
 
