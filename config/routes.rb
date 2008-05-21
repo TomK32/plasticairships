@@ -1,8 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :sites, :has_many => :comments
-  map.resources :site_comments, :controller => 'site/comments'
+  map.resources :sites do |sites|
+    sites.resources :comments, :controller => 'Site::Comments'
+  end
+  map.resources :users
 
-  map.resources :posts, :has_many => :comments, :member => {:permalink => :get }
+  map.resources :posts, :has_many => :comments, :member => {:permalink => :get}, :collection => {:admin => :get}
 
   map.post_permalink 'blog/:year/:month/:day/:permalink', :controller => "posts", :action => "show"
 
