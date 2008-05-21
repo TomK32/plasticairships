@@ -1,5 +1,8 @@
 <% @page_title = 'Blog' %>
 
+<%= will_paginate @posts %>
 <%= link_to 'Submit a new post', new_post_path %>
 
 <%= render :partial => 'post', :collection => @posts %>
+
+<%= will_paginate @posts %>

@@ -1,13 +1,20 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.find_published_posts(10)
+    @posts = Post.find_published_posts(2, params[:page])
+    unless @posts
+      redirect_to :action => :index and return
+    end
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }
     end
   end
-
+  
+  def admin
+    @posts = Post.find_published_posts(10)
+  end
+  
   def show
     if params[:id]
       @post = Post.find(params[:id], :include => [:comments, :user])

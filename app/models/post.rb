@@ -4,9 +4,10 @@ class Post < ActiveRecord::Base
 
   attr_protected :user_id, :published
 
-  def self.find_published_posts(limit=10)
-    find(:all, :conditions => ['posts.published = ? AND posts.published_at < ?', true, Time.now],
-      :order => 'published_at DESC', :limit => limit)   
+  def self.find_published_posts(per_page = 10, page = 1)
+    return false if page.to_i < 1 and page != nil
+    self.paginate :conditions => ['posts.published = ? AND posts.published_at < ?', true, Time.now],
+      :order => 'published_at DESC', :per_page => per_page, :page => page
   end
   
   def self.find_by_date_and_permalink(year, month, day, permalink)
