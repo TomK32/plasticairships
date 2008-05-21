@@ -1,2 +1,5 @@
-<h3><%= post.title %></h3>
+<h3><%= link_to post.title, post %></h3>
+<div class="meta">
+  Posted by <%= link_to h(post.user.name), user_url(post.user) %> on <%= post.published_at.to_s(:long) %>. There are <%= link_to pluralize(post.comments.count, 'Comment'), post_url(post) + '#comments' %> so far.
+</div>
 <%= textilize(post.body) %>

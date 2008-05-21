@@ -9,7 +9,11 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find_by_date_and_permalink(params[:year], params[:month], params[:day], params[:permalink])
+    if params[:id]
+      @post = Post.find(params[:id], :include => [:comments, :user])
+    else
+      @post = Post.find_by_date_and_permalink(params[:year], params[:month], params[:day], params[:permalink])
+    end
 
     respond_to do |format|
       format.html # show.html.erb

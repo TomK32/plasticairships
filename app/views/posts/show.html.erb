@@ -1,3 +1,21 @@
+<% @page_title = @post.title %>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<div class="meta">
+  Posted by <%= link_to h(@post.user.name), user_url(@post.user) %> on <%= @post.published_at.to_s(:long) %>. There are <%= link_to pluralize(@post.comments.count, 'Comment'), '#comments' %> so far.
+</div>
+<%= textilize(@post.body) %>
+
+<div id="comments">
+<h3>Comments</h3>
+<% if @post.comments.empty? %>
+  <p>No comments so far</p>
+<% else %>
+  <%= render :partial => 'comment', :collection => @post.comments %>
+<% end %>
+</div>
+<h3>New comment</h3>
+
+<% form_for :comment, @comment, :url => post_comments_url(@post), :method => :post do |f| %>
+  <%= render :partial => '/comments/form', :locals => {:f => f} %>
+  <%= submit_tag 'Save comment' %>
+<% end %>
