@@ -37,7 +37,7 @@ Rails::Initializer.run do |config|
   # Make sure the secret is at least 30 characters and all random, 
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
-    :session_key => '_plasticpilots_session',
+    :session_key => '_plasticairships_session',
     :secret      => '229e13476db2993df2826c6b380318c991847d2e20e8056c225042a1c7930a5a5adfa89595d45a886c5c0c13ace83964b471d32ee70e54852a793a29572b5615'
   }
 
@@ -57,3 +57,7 @@ Rails::Initializer.run do |config|
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
 end
+
+  
+GOLDBERG_ROLES = {}
+Goldberg::Role.find(:all, :select => 'id, name').each{|r| GOLDBERG_ROLES.update({r.name.downcase.to_sym => r.id})}
