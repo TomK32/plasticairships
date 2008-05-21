@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.find_published_posts(2, params[:page])
+    @posts = Post.find_published_posts(10, params[:page])
     unless @posts
       redirect_to :action => :index and return
     end
