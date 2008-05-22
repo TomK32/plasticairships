@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 9) do
+ActiveRecord::Schema.define(:version => 10) do
 
   create_table "comments", :force => true do |t|
     t.integer  "post_id",                              :null => false
@@ -160,15 +160,16 @@ ActiveRecord::Schema.define(:version => 9) do
   end
 
   create_table "sites", :force => true do |t|
-    t.string   "title",                         :null => false
-    t.string   "url",                           :null => false
-    t.string   "owner",                         :null => false
-    t.text     "description",                   :null => false
-    t.integer  "user_id",                       :null => false
+    t.string   "title",                             :null => false
+    t.string   "url",                               :null => false
+    t.string   "owner",                             :null => false
+    t.text     "description",                       :null => false
+    t.integer  "user_id",                           :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "comments_count", :default => 0
     t.string   "permalink"
+    t.boolean  "published",      :default => false
   end
 
 end

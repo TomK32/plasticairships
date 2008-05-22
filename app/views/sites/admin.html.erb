@@ -1,0 +1,11 @@
+<% @page_title = 'blog administration' %>
+
+<% @sites.each do |site| %>
+  <div id="site-<%= site.id%>"><%= link_to h(site.title), site %> by <%= link_to site.user.name, user_url(site.user_id) %> on <%= site.created_at.to_s(:long) %> is <%= 'not' unless site.published? %> published and has <%= pluralize(site.comments_count, 'comment') %><br />
+  <% unless site.published %>
+  <%= link_to 'publish', publish_site_url(site), :method => :put %> |
+  <% end %>
+  <%= link_to 'edit', edit_site_url(site) %> | 
+  <%= link_to 'delete', site_url(site), {:method => :delete, :confirm => 'Sure you want to delete this?'} %>
+  </div>
+<% end %>

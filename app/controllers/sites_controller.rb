@@ -1,11 +1,18 @@
 class SitesController < ApplicationController
+  before_filter :current_site, :only => [:edit, :update, :destroy, :show, :publish]
   def index
-    @sites = Site.find :all
+    @sites = Site.find_published_sites(10, params[:page])
+    redirect_to :action => :index and return unless @sites
 
     respond_to do |format|
       format.html # index.html.erb
       format.atom { render :layout => false }
     end
+  end
+  
+  def admin
+    @sites = Site.find :all, :conditions => ['published = ?', false], :order => 'id DESC'
+    @sites += Site.find_published_sites(25, params[:page])
   end
 
   def show
@@ -63,6 +70,12 @@ class SitesController < ApplicationController
     end
   end
 
+  def publish
+    @site.published = true
+    @site.save(false)
+    redirect_to admin_sites_url
+  end
+
   def destroy
     @site = Site.find(params[:id])
     @site.destroy
@@ -72,5 +85,10 @@ class SitesController < ApplicationController
       format.html { redirect_to(admin_sites_url) }
       format.xml  { head :ok }
     end
+  end
+
+  protected
+  def current_site
+    @site = Site.find(params[:id])
   end
 end
