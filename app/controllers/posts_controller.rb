@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
+  
+  before_filter :current_post, :only => [:edit, :update, :destroy, :publish]
+  
   def index
     @posts = Post.find_published_posts(10, params[:page])
-    unless @posts
-      redirect_to :action => :index and return
-    end
+    redirect_to :action => :index and return unless @posts
 
     respond_to do |format|
       format.html # index.html.erb
@@ -12,7 +13,8 @@ class PostsController < ApplicationController
   end
   
   def admin
-    @posts = Post.find_published_posts(25, params[:page])
+    @posts = Post.find :all, :conditions => ['published = ?', false], :order => 'id DESC'
+    @posts += Post.find_published_posts(25, params[:page])
   end
   
   def show
@@ -38,7 +40,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def create
@@ -80,9 +81,14 @@ class PostsController < ApplicationController
       end
     end
   end
+  
+  def publish
+    @post.published = true
+    @post.save(false)
+    redirect_to admin_posts_url
+  end
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
 
     respond_to do |format|
@@ -90,5 +96,10 @@ class PostsController < ApplicationController
       format.html { redirect_to(admin_posts_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  protected
+  def current_post
+    @post = Post.find(params[:id])
   end
 end
