@@ -60,4 +60,4 @@ end
 
   
 GOLDBERG_ROLES = {}
-Goldberg::Role.find(:all, :select => 'id, name').each{|r| GOLDBERG_ROLES.update({r.name.downcase.to_sym => r.id})}
+Goldberg::Role.find(:all, :select => 'id, name').each{|r| GOLDBERG_ROLES.update({r.name.downcase.to_sym => r.id})} rescue nil
