@@ -3,21 +3,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 
 <head>
-<title><%= @page_title.blank? ? Goldberg.settings.site_name : ('%s // %s' % [@page_title, Goldberg.settings.site_name]) %></title>
+  <title><%= @page_title.blank? ? Goldberg.settings.site_name : ('%s // %s' % [@page_title, Goldberg.settings.site_name]) %></title>
 
-<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta name="description" content="plasticpilots is showcasing great webdesign" />
+  <meta name="author" content="plasticpilots.com" />
+  <meta name="keywords" content="webdesign,showcases,design" />
+	
+  <meta name="robots" content="all" />
+  <link title="Sites" type="application/atom+xml" href="<%= formatted_sites_url(:format => :rss)%>" rel="alternate" />
+  <link title="Blog" type="application/atom+xml" href="<%= formatted_posts_url(:format => :rss)%>" rel="alternate" />
 
-<link rel="stylesheet" href="/goldberg/stylesheets/goldberg.css" 
-  type="text/css" media="screen" />
-<link rel="stylesheet" href="/stylesheets/application.css" 
-  type="text/css" media="screen" />
+  <link rel="stylesheet" href="/goldberg/stylesheets/goldberg.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="/stylesheets/application.css" type="text/css" media="screen" />
 
 
 
 </head>
 
 <body>
-<div class="container">
+<div id="container">
 
 <div id="header">
 
@@ -30,13 +35,27 @@
       <li>about</li>
 <!--      <li>casteljau</li>
       <li>community</li>-->
+      <% if current_user %>
+      <li><%= link_to 'profile', profile_url %></li>
+      <% if current_user.moderator? %>
+      <li>dashboard</li>
+      <% end %>
+      <% if current_user.admin? %>
+      <li><%= link_to 'admin', '/site_admin' %></li>
+      <% end %>
+      <li><%= link_to 'logout', logout_url %></li>
+      <% else %>
+      <li><%= link_to 'login', login_url %></li>
+      <li><%= link_to 'signup', signup_url %></li>
+      <% end %>
     </ul>
+    <%= render :partial => 'navigation' if params[:controller] == 'sites' %>
   </div>
 
 </div>
 
 
-<div id="right">
+<div id="left">
   <h3>Blog<%= link_to '++', new_post_url(), :title => 'submit a new blog post', :class => "plus" %></h3>
   <% cache('posts-sidebar') do %>
     <% if latest_posts.blank? %>
@@ -50,8 +69,8 @@
     <% end %>
   <% end %>
     <%= goldberg_left_menu %>
-    <%= goldberg_login %>
 </div>
+
 
 <a name="top"></a>
 <div id="main">
@@ -67,7 +86,21 @@
 <%= yield %>
 </div>
 
-
+<div id="right">
+  <h3>Sites<%= link_to '++', new_site_url(), :title => 'submit a new site', :class => "plus" %></h3>
+  <% cache('sites-sidebar') do %>
+    <% if latest_sites(25).blank? %>
+    <p>No sites so far</p>
+    <% else %>
+    <ul id="sites-list">
+      <% latest_sites(25).each do |site| %>
+      <li><%= link_to site.title, site %></li>
+      <% end %>
+    </ul>
+    <%= link_to 'more sites', sites_url() %>        
+    <% end %>      
+  <% end %>
+</div>
 <div id="footer">
 <ul>
   <li><a href="#top">^ top</a></li>
