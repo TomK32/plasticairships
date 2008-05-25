@@ -10,8 +10,7 @@ atom_feed(:schema_date => 2008, :root_url => sites_url) do |feed|
         author.name site.user.name
         author.url user_url(site.user)
       end
-      entry.content '<div style="float: left;">%s</div>' % image_tag(site.thumbnail_url(request)) + site.description,
-        :type => :html
+      entry.content render(:partial => 'feed_content.html.erb', :locals => {:site => site}), :type => :html
     end
     
   end
