@@ -23,6 +23,10 @@ class Site < ActiveRecord::Base
     self.thumbnail_filename = screenshot.public_filename(:thumb) unless screenshot.nil?
   end
   
+  def thumbnail_url(request)
+    request.protocol + request.host_with_port + self.thumbnail_filename
+  end
+  
   def url_short
     self.url.gsub('http://', '')
   end
