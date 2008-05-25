@@ -1,6 +1,6 @@
 class Site::CommentsController < ApplicationController
   before_filter :current_site, :only => [:index, :new, :create]
-  before_filter :current_comment, :only => [:show, :edit, :update]
+  before_filter :current_comment, :only => [:show, :edit, :update, :destroy]
   def index
     @comments = @site.comments.find :all
 
@@ -35,8 +35,7 @@ class Site::CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        flash[:notice] = 'Comment was successfully created.'
-        format.html { redirect_to(site_path(@site) + "#%d" % @comment.id)}
+        format.html { redirect_to(site_path(@site) + "#comment-%d" % @comment.id)}
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
         flash[:error] = 'Comment couldn\'t be created.'
@@ -49,8 +48,7 @@ class Site::CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
-        flash[:notice] = 'Comment was successfully updated.'
-        format.html { redirect_to(site_path(@site) + "#%d" % @comment.id)}
+        format.html { redirect_to(site_path(@site) + "#comment-%d" % @comment.id)}
         format.xml  { head :ok }
       else
         flash[:error] = 'Comment couldn\'t be updated.'
@@ -76,6 +74,6 @@ class Site::CommentsController < ApplicationController
   end
 
   def current_comment
-    @comment = Site::Comment.find(:first, :conditions => ['id = ? AND site_id = ?', params[:id], params[:site_id]], :include => :site)
+    @comment = Site::Comment.find(:first, :conditions => ['comments.id = ? AND site_id = ?', params[:id], params[:site_id]], :include => :site)
   end
 end
