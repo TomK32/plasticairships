@@ -2,7 +2,7 @@
 
 <% unless comments.blank? %>
 <p><%= f.label :parent_comment_id, 'Parent comment' %><br />
-  <%= f.select :parent_comment_id, comments.collect{|c| [c.short_info, c.id] } %>
+  <%= f.select :parent_comment_id, comments.collect{|c| [c.short_info, c.id] }, :include_blank => true %>
 </p>
 
 <% end %>
@@ -17,8 +17,12 @@
 <% if logged_in? and current_user.guest? %>
   <p class="notice">You are logged in with a guest account, so if you fill out this user data
     we will update your account and send you an email to confirm your account.</p>
+<% else %>
+<p class="notice">
+  If you are already registered you may want to <%= link_to 'login', login_url %> first. 
+</p>
 <% end %>
-<p><%= f.label :user_name, 'Name (required)' %><br />
+<p><%= f.label :user_name, 'You real name (required, if you a fake name your comment will be deleted)' %><br />
   <%= f.text_field :user_name %>
 </p>
 <p><%= f.label :user_email, 'E-Mail (required)' %><br />
