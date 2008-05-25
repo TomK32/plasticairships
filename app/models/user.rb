@@ -2,6 +2,7 @@ class User < Goldberg::User
   has_many :sites
   has_many :posts
   has_many :comments
+  has_many :assets
   
   def guest?
     self.role_id == GOLDBERG_ROLES[:guest]

@@ -1,16 +1,33 @@
 <%= error_messages_for 'site' %>
+<%= error_messages_for 'asset' %>
 
-<!--[form:site]-->
-<p><label for="site_title">Title</label><br/>
-<%= f.text_field 'title'  %></p>
-<p><label for="site_url">Url</label><br/>
-<%= f.text_field 'url'  %></p>
-<p><label for="site_owner">Owner</label><br/>
-<%= f.text_field 'owner'  %></p>
-<p><label for="site_description">Description</label><br/>
-<%= f.text_area 'description'  %></p>
+<p><%= f.label :title, 'Title' %><br />
+  <%= f.text_field :title %>
+</p>
+<p><%= f.label :url, 'URL' %><br />
+  <%= f.text_field :url %>
+</p>
+<p><%= f.label :owner, 'Owner' %><br />
+  <%= f.text_field :owner %>
+</p>
 
+<p><%= f.label :description, 'Description' %><br />
+  <%= f.text_area :description %>
+</p>
+<% fields_for :asset do |fa| %>
+<fieldset>
+  <legend>Screenshots</legend>
+<div id="assets">
+<% @site.assets.each do |asset| %>
+  <div class="asset tiny edit">
+  <%= link_to image_tag(asset.public_filename(:tiny)), asset.public_filename %><br />
+  <%= link_to 'delete', site_asset_url(@site, asset), :method => :delete %>
+  </div>
+<% end %>
+</div>
 
-<!--[eoform:site]-->
-
-
+<p><%= fa.label :uploaded_data, 'Upload a new file' %><br />
+  <%= fa.file_field :uploaded_data %>
+</p>
+<% end %>
+</fieldset>

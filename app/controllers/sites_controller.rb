@@ -1,5 +1,10 @@
 class SitesController < ApplicationController
-  before_filter :current_site, :only => [:edit, :update, :destroy, :show, :publish]
+  
+  caches_action :show, :index
+  cache_sweeper :site_sweeper, :site_comment_sweeper, :only => [:update, :create, :destroy, :publish]
+
+  before_filter :current_site, :only => [:edit, :update, :destroy, :publish]
+
   def index
     @sites = Site.find_published_sites(10, params[:page])
     redirect_to :action => :index and return unless @sites
@@ -16,7 +21,7 @@ class SitesController < ApplicationController
   end
 
   def show
-    @site = Site.find(params[:id], :include => :comments)
+    @site = Site.find(params[:id], :include => [:comments, :assets])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,16 +39,17 @@ class SitesController < ApplicationController
   end
 
   def edit
-    @site = Site.find(params[:id])
   end
 
   def create
     create_guest unless logged_in?
     @site = current_user.sites.new(params[:site])
-
+    unless params[:asset].blank? and ! @site.thumbnail_filename.nil?
+      @asset = @site.assets.new(params[:asset])
+      @asset.user = current_user
+    end
     respond_to do |format|
       if @site.save
-        flash[:notice] = 'Site was successfully created.'
         format.html { redirect_to(@site) }
         format.xml  { render :xml => @site, :status => :created, :location => @site }
       else
@@ -55,12 +61,19 @@ class SitesController < ApplicationController
   end
 
   def update
-    @site = Site.find(params[:id])
+    unless params[:asset].blank? or params[:asset][:uploaded_data].blank?
+      @asset = @site.assets.new(params[:asset])
+      @asset.user = current_user
+      unless @asset.save
+        flash[:error] = "Image couldn't be saved"
+        render :action => 'edit' and return
+      end
+    end
 
     respond_to do |format|
       if @site.update_attributes(params[:site])
         flash[:notice] = 'Site was successfully updated.'
-        format.html { redirect_to(@site) }
+        format.html { render :action => :show }
         format.xml  { head :ok }
       else
         flash[:error] = 'Site couldn\'t be updated.'
@@ -77,7 +90,6 @@ class SitesController < ApplicationController
   end
 
   def destroy
-    @site = Site.find(params[:id])
     @site.destroy
 
     respond_to do |format|

@@ -1,13 +1,15 @@
 <% @page_title = h(@site.title) %>
-
-
-<div class="thumbnail"><%= link_to image_tag('sites/' + @site.thumbnail) %></div>
+<div class="site">
+<div class="body"><%= textilize(@site.description) %></div>
 
 <div class="meta">
-  posted by <%= link_to h(@site.user.name), user_url(@site.user) %> on <%= @site.created_at.to_s(:long) %>.
+  submitted by <%= link_to h(@site.user.name), user_url(@site.user) %> on <%= @site.created_at.to_s(:long) %>.
 </div>
 
-<div class="body"><%= textilize(@site.description) %></div>
+<% @site.assets.each do |asset| %>
+  <%= image_tag asset.public_filename(:thumb) %>
+<% end %>
+</div>
 
 <div id="comments">
 <h3>Comments</h3>

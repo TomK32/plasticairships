@@ -2,7 +2,7 @@
 
 <%= error_messages_for :site %>
 
-<% form_for(@site)) do |f| %>
+<% form_for(@site, :html => { :multipart => true }) do |f| %>
   <%= render :partial => 'form' , :locals => {:f => f} %>
   <p>
     <%= f.submit "Update" %>

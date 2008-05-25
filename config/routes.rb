@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :sites, :collection => {:admin => :get}, :member => {:publish => :put} do |sites|
-    sites.resources :comments, :controller => 'Site::Comments'
+    sites.resources :comments, :controller => 'site/comments'
+    sites.resources :assets, :controller => 'site/assets'
   end
   map.resources :users
 
@@ -38,7 +39,9 @@ ActionController::Routing::Routes.draw do |map|
   # map.root :controller => "welcome"
   
   map.login 'login', :controller => 'goldberg/auth', :action => 'login'
+  map.logout 'logout', :controller => 'goldberg/auth', :action => 'login'
   map.signup 'signup', :controller => 'goldberg/users', :action => 'self_register'
+  map.profile 'profile', :controller => 'goldberg/users', :action => 'self_show'
 
   # See how all your routes lay out with "rake routes"
 
