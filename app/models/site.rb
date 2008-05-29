@@ -1,9 +1,9 @@
 class Site < ActiveRecord::Base
-  attr_protected :user_id, :published
+  attr_protected :user_id, :published, :featured
   has_many :comments, :class_name => 'Site::Comment', :foreign_key => 'post_id'
   belongs_to :user
-  has_many :assets, :class_name => 'Site::Asset'
-  has_one :screenshot, :class_name => 'Site::Asset', :order => ("%1$s.position ASC, %1$s.id ASC" % Site::Asset.table_name)
+  has_many :assets, :class_name => 'Site::Asset', :conditions => 'thumbnail IS NULL', :order => "site_assets.position ASC, site_assets.id ASC"
+  has_one :screenshot, :class_name => 'Site::Asset', :conditions => 'thumbnail IS NULL', :order => "site_assets.position ASC, site_assets.id ASC"
   
   validates_presence_of :title
   validates_presence_of :permalink
@@ -11,10 +11,22 @@ class Site < ActiveRecord::Base
   validates_presence_of :description
   validates_length_of :description, :minimum => 40
 
+  def after_create
+    puts self.assets.inspect
+    self.assets.each{|asset| asset.save! }
+  end
   
-  def self.find_published_sites(per_page = 10, page = 1)
+  def after_save
+    self.thumbnail_filename = assets.first.public_filename(:thumb) if self.thumbnail_filename.blank? and ! assets.empty?
+  end
+  
+  def self.find_featured_published_with_screenshots(limit = 10)
+    self.find_all_by_published_and_featured(true, true, :joins => 'INNER JOIN site_assets ON sites.id = site_assets.site_id and site_assets.thumbnail IS NULL')
+  end
+  
+  def self.find_published(per_page = 10, page = 1)
     return false if page.to_i < 1 and page != nil
-    self.paginate :conditions => ['sites.published = ?', true], :order => 'sites.id DESC', :per_page => per_page, :page => page
+    self.paginate :conditions => ['published = ?', true], :order => 'sites.id DESC', :per_page => per_page, :page => page
   end
 
   def before_validation

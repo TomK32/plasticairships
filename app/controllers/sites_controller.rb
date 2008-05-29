@@ -1,13 +1,13 @@
 class SitesController < ApplicationController
   
   caches_action :show, :index
-  cache_sweeper :site_sweeper, :site_comment_sweeper, :only => [:update, :create, :destroy, :publish]
+  cache_sweeper :site_sweeper, :only => [:update, :create, :destroy, :publish, :featured]
 
-  before_filter :current_site, :only => [:edit, :update, :destroy, :publish]
+  before_filter :current_site, :only => [:edit, :update, :destroy, :publish, :featured]
 
   def index
-    @sites = Site.find_published_sites(10, params[:page])
-    redirect_to :action => :index and return unless @sites
+    @sites = Site.find_published(10, params[:page])
+    redirect_to :action => :index and return unless @sites or params[:page].blank?
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,7 +17,7 @@ class SitesController < ApplicationController
   
   def admin
     @sites = Site.find :all, :conditions => ['published = ?', false], :order => 'id DESC'
-    @sites += Site.find_published_sites(25, params[:page])
+    @sites += Site.find_published(25, params[:page])
   end
 
   def show
@@ -44,12 +44,15 @@ class SitesController < ApplicationController
   def create
     create_guest unless logged_in?
     @site = current_user.sites.new(params[:site])
-    unless params[:asset].blank? and ! @site.thumbnail_filename.nil?
-      @asset = @site.assets.new(params[:asset])
-      @asset.user = current_user
-    end
     respond_to do |format|
       if @site.save
+        puts @site.inspect
+        unless params[:asset].blank?
+          asset = @site.assets.new(params[:asset])
+          puts asset.inspect
+          asset.user = current_user
+          asset.save
+        end
         format.html { redirect_to(@site) }
         format.xml  { render :xml => @site, :status => :created, :location => @site }
       else
@@ -86,6 +89,11 @@ class SitesController < ApplicationController
   def publish
     @site.published = true
     @site.save(false)
+    redirect_to admin_sites_url
+  end
+
+  def featured
+    @site.toggle!(:featured)
     redirect_to admin_sites_url
   end
 

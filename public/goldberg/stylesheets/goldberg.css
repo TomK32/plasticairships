@@ -84,8 +84,8 @@ list-style-image: url("/goldberg/images/permission.png");
 
 /*** System Settings ***/
 
-table.system_settings tr.settings_row { 
-background-color:#ecdbbe ;
+table.system_settings tr.settings_row td { 
+border-bottom: 1px solid #ecdbbe ;
 }
 
 div.guidance_text { 

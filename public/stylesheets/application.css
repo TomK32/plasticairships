@@ -64,7 +64,6 @@ h1 a, h2 a, h3 a {
 	}
 
 h3 {
-	clear:left;
 	font-weight: bold;
 	color:#CCFF42;
 	padding: 0;
@@ -241,6 +240,10 @@ ul.item_list li a:hover span.comment_count {
 	color:#FFF;
 }
 
+#top_navigation li.member, #top_navigation li.moderator, #top_navigation li.admin {
+	display: none;
+}
+
 /* sub navigation */
 #subnavigation {
 	
@@ -400,6 +403,9 @@ ul#sites-list li a span.comment_count {
 
 /* comments */
 
+#comments {
+	clear: both;
+}
 
 div.comment {
 	margin:0px 15px 1em 0px;
@@ -407,7 +413,7 @@ div.comment {
 
 
 /* meta */
-.site .meta, .post .meta {
+#sites .site .meta, #posts .post .meta {
 	text-align: right;
 	font-size: 95%;
 }
@@ -628,5 +634,15 @@ div#first ul.user_list li a img {
 	display: inline;
 }
 .asset.tiny {
+float: left;
 	width: 70px;
+}
+
+#sites .site, #posts .post {
+	clear: both;
+}
+
+.site .asset.thumb {
+	float: left;
+	margin: 2em 15px 0 0;
 }

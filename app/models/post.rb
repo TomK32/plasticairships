@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
 
   attr_protected :user_id, :published
 
-  def self.find_published_posts(per_page = 10, page = 1)
+  def self.find_published(per_page = 10, page = 1)
     return false if page.to_i < 1 and page != nil
     self.paginate :conditions => ['posts.published = ? AND posts.published_at < ?', true, Time.now],
       :order => 'posts.published_at DESC', :per_page => per_page, :page => page

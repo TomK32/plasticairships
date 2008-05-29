@@ -6,8 +6,11 @@
   submitted by <%= link_to h(@site.user.name), user_url(@site.user) %> on <%= @site.created_at.to_s(:long) %>.
 </div>
 
+<div id="assets">
 <% @site.assets.each do |asset| %>
-  <%= image_tag asset.public_filename(:thumb) %>
+  <div class="asset thumb">
+    <%= link_to image_tag(asset.public_filename(:thumb)), asset.public_filename(), :popup => true %>
+  </div>
 <% end %>
 </div>
 
@@ -25,3 +28,4 @@
   <%= render :partial => '/comments/form', :locals => {:f => f, :comments => @site.comments} %>
   <%= submit_tag 'Save comment' %>
 <% end %>
+</div>

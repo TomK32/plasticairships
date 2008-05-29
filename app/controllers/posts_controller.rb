@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_filter :current_post, :only => [:edit, :update, :destroy, :publish]
   
   def index
-    @posts = Post.find_published_posts(10, params[:page])
+    @posts = Post.find_published(10, params[:page])
     redirect_to :action => :index and return unless @posts
 
     respond_to do |format|
@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   
   def admin
     @posts = Post.find :all, :conditions => ['published = ?', false], :order => 'id DESC'
-    @posts += Post.find_published_posts(25, params[:page])
+    @posts += Post.find_published(25, params[:page])
   end
   
   def show

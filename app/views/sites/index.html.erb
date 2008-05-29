@@ -1,12 +1,7 @@
 <% @page_title = 'featured sites' %>
 
-<% for site in @sites %>
-<div class="site" id="site-<%= site.id %>">
-  <h3><%= link_to h(site.title), site %></h3>
-  <%= link_to site.url_short, site.url %><br />
-  <%= link_to image_tag(site.thumbnail_filename), site.thumbnail_filename unless site.thumbnail_filename.blank? %>
-  <p><%= textilize(site.description) %></p>
-  <%= link_to pluralize(site.comments_count, 'comment'), site %>
-</div>  
-<% end %>
-
+<div id="sites">
+<%= will_paginate @posts %>
+  <%= render :partial => "site", :collection => @sites %>
+<%= will_paginate @posts %>
+</div>
