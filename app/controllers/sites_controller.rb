@@ -42,7 +42,7 @@ class SitesController < ApplicationController
   end
 
   def create
-    create_guest unless logged_in?
+    create_guest(params[:user]) unless logged_in?
     @site = current_user.sites.new(params[:site])
     respond_to do |format|
       if @site.save

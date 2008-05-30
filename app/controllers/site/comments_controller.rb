@@ -31,8 +31,10 @@ class Site::CommentsController < ApplicationController
 
   def create
     @comment = @site.comments.new(params[:comment])
-    @comment.user = current_user if current_user
-
+    if current_user
+      @comment.user = current_user
+      @comment.published = true
+    end
     respond_to do |format|
       if @comment.save
         format.html { redirect_to(site_path(@site) + "#comment-%d" % @comment.id)}

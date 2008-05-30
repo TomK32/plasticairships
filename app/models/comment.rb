@@ -5,14 +5,14 @@ class Comment < ActiveRecord::Base
 
   attr_protected :post_id, :user_id, :published
 
-  validates_presence_of :post_id, :body
+  validates_presence_of :post_id, :body, :user_name, :user_email
 
   # caching :-)
   def before_validation
     unless user.nil?
-      self.user_name = user.name
-      self.user_email = user.email
-      self.user_website = user.website
+      self[:user_name] = user.name
+      self[:user_email] = user.email
+      self[:user_website] = user.website
     end
   end
   

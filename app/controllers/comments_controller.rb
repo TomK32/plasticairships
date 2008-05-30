@@ -33,13 +33,13 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new(params[:comment])
     if current_user
       @comment.user = current_user
-      current_user.update_attributes(params[:comment][:user]) if current_user.guest?
+      @comment.published = true
     end
 
     respond_to do |format|
       if @comment.save
         flash[:notice] = 'Comment was successfully created.'
-        format.html { redirect_to(post_permalink_path(@comment.post.permalink) + "#" + @comment.id)}
+        format.html { redirect_to(post_path(@comment.post) + "#comment-%i" % @comment.id)}
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
         flash[:error] = 'Comment couldn\'t be created.'
@@ -53,7 +53,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
         flash[:notice] = 'Comment was successfully updated.'
-        format.html { redirect_to(post_permalink_path(@comment.post.permalink) + "#" + @comment.id)}
+        format.html { redirect_to(post_path(@comment.post) + "#comment-%i" % @comment.id)}
         format.xml  { head :ok }
       else
         flash[:error] = 'Comment couldn\'t be updated.'

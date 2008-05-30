@@ -14,15 +14,15 @@ module ActionController
       ! current_user.nil?    
     end
 
-    def create_guest(*args)
+    def create_guest(args = {})
       return if logged_in?
-      attributes = {:name => 'guest%i' % rand(100000), 
-        :password => Goldberg::User.random_password, 
-        :role_id => GUEST_ROLE_ID}
+      attributes = {"name" => 'guest%i' % rand(100000), 
+        "password" => Goldberg::User.random_password, 
+        "role_id" => GUEST_ROLE_ID}
       attributes.update(args) if args.is_a?(Hash)
       return if current_user
       user = Goldberg.user = Goldberg::User.create(attributes)
-      user.update_attribute :name, 'guest%i' % user.id
+      user.update_attribute :name, 'guest%i' % user.id if user.name =~ /^guest/
       Goldberg::AuthController.set_user(session, user.id)
     end
   end

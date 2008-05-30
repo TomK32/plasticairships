@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   has_many :comments
+  has_many :published_comments, :class_name => 'Comment', :conditions => ['comments.published = ?', true]
   belongs_to :user
 
   attr_protected :user_id, :published

@@ -43,7 +43,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    create_guest unless logged_in?
+    create_guest(params[:user]) unless logged_in?
     @post = current_user.posts.new(params[:post])
     @post.published = true if params[:post][:published] and current_user.moderator?
 
