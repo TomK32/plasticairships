@@ -22,7 +22,6 @@
 </head>
 
 <body>
-<div id="container">
 
 <div id="header">
 
@@ -37,21 +36,42 @@
       <li>community</li>-->
       <% if current_user %>
       <li><%= link_to 'profile', profile_url %></li>
-      <% if current_user.moderator? %>
+        <% if current_user.moderator? %>
       <li>dashboard</li>
-      <% end %>
-      <% if current_user.admin? %>
+        <% end %>
+        <% if current_user.admin? %>
       <li><%= link_to 'admin', '/site_admin' %></li>
-      <% end %>
+        <% end %>
       <li><%= link_to 'logout', logout_url %></li>
       <% else %>
       <li><%= link_to 'login', login_url %></li>
       <li><%= link_to 'signup', signup_url %></li>
       <% end %>
     </ul>
-    <%= render :partial => 'navigation' if params[:controller] == 'sites' %>
+      <%= render :partial => 'navigation' if %w(posts sites).include?(params[:controller]) %>
   </div>
 
+</div>
+
+<div id="container">
+<div id="col-main">
+<div id="col-left">
+
+
+<a name="top"></a>
+<div id="wrap-main">
+<div id="main">
+<% if @page_title %>
+  <h2><%= @page_title %></h2>
+<% end %>
+<% flash.each do |type, message| %>
+  <div class="<%= type %>">
+    <%= message %>
+  </div>
+<% end %>
+
+<%= yield %>
+</div>
 </div>
 
 
@@ -68,22 +88,8 @@
       <%= link_to 'more blog posts', posts_url() %>
     <% end %>
   <% end %>
-    <%= goldberg_left_menu %>
-</div>
-
-
-<a name="top"></a>
-<div id="main">
-<% if @page_title %>
-  <h2><%= @page_title %></h2>
-<% end %>
-<% flash.each do |type, message| %>
-  <div class="<%= type %>">
-    <%= message %>
-  </div>
-<% end %>
-
-<%= yield %>
+  
+  <%= goldberg_left_menu %>
 </div>
 
 <div id="right">
@@ -100,7 +106,11 @@
     <%= link_to 'more sites', sites_url() %>        
     <% end %>      
   <% end %>
+  </div>
+</div> <!-- #col-main and #col-left -->
 </div>
+</div>
+
 <div id="footer">
 <ul>
   <li><a href="#top">^ top</a></li>

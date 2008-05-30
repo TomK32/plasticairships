@@ -1,5 +1,5 @@
 body {
-	background:#000 url(/images/bg_left_top.jpg) no-repeat left top;
+	background: black url(/images/bg_left_top.jpg) no-repeat left top;
 	font-family: "Arial",  san-serif;
 	font-size: x-small;
 	padding:0px;
@@ -99,34 +99,59 @@ div#main p.screenshot a img {
 
 
 /* layout */
-
-
-#container {
-	min-width:960px;
-}
-
 #header {
-	height:170px;
-	}
-
-#main {
-	float:left;
-	min-width:400px;
-	width:50%;
-	margin:0px 0px 0px 25px;
-	padding: 0 0 0 0px;
+	height:160px;
 }
-
+#container {
+	width:1020px;
+	position:relative;
+  clear:both;
+  float:left;
+	overflow:hidden;
+}
+/* many thanks to http://matthewjamestaylor.com/blog/ultimate-3-column-holy-grail-pixels.htm
+   for the css 3-column layout */
+#col-main {
+	float:left;
+	width:200%;
+	margin-left:-195px; 	/* Width of right column */
+	position:relative;
+	right:100%;
+}
+#col-left {
+	float:left;
+	width:100%;
+	margin-left:-50%;
+	position:relative;
+	left:440px;
+}
+#wrap-main {
+	float:left;
+	width:50%;
+	position:relative;
+	right:210px;        	/* Width of left column */
+	padding-bottom:1em;
+}
+#main {  
+	margin:0 225px;
+  position:relative;
+	left:200%;
+	overflow:hidden;
+}
 #left {
 	float:left;
-	width:220px;
-	margin:0px 0px 0px 20px;
+	float:right;			/* This overrides the float:left above */
+	width:210px;        	/* Width of left column content (left column width minus left and right padding) */
+	position:relative;
+	right:15px;
 }
-
 #right {
+	float:left;
 	float:right;
-	width:210px;
-	margin:0px 10px 0px 20px;
+	width:170px;
+	margin-right:15px;	
+	position:relative;
+	left:50%;
 }
 
 /* info block on single site view */
@@ -638,11 +663,17 @@ float: left;
 	width: 70px;
 }
 
-#sites .site, #posts .post {
+#sites, #sites .site, #posts, #posts .post {
 	clear: both;
 }
 
+#sites.tiny a img, #sites.tiny a {
+	margin: 0 1px 1px 0;
+	padding: 0;
+}
+
+
 .site .asset.thumb {
 	float: left;
-	margin: 2em 15px 0 0;
+	margin: 0 15px 20px 0;
 }

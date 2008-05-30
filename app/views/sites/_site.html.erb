@@ -1,9 +1,8 @@
 <div class="site" id="site-<%= site.id %>">
   <div class="asset thumb">
-    <%= link_to image_tag(site.thumbnail_filename), site.thumbnail_filename unless site.thumbnail_filename.blank? %>
+    <%= link_to image_tag(site.thumbnail_filename), site unless site.thumbnail_filename.blank? %>
   </div>
   <h3><%= link_to h(site.title), site %></h3>
-  <%= link_to site.url_short, site.url %>
 
   <p><%= textilize(site.description) %></p>
   <%= link_to pluralize(site.comments_count, 'comment'), site %>

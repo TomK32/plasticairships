@@ -21,7 +21,7 @@ class Site < ActiveRecord::Base
   end
   
   def self.find_featured_published_with_screenshots(limit = 10)
-    self.find_all_by_published_and_featured(true, true, :joins => 'INNER JOIN site_assets ON sites.id = site_assets.site_id and site_assets.thumbnail IS NULL')
+    self.find_all_by_published_and_featured(true, true, :include => :screenshot, :limit => limit)
   end
   
   def self.find_published(per_page = 10, page = 1)
