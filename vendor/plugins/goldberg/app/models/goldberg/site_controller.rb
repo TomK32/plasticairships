@@ -2,8 +2,8 @@ module Goldberg
   class SiteController < ActiveRecord::Base
     include Goldberg::Model
 
-    belongs_to :permission
-    has_many :controller_actions, :order => 'name', :dependent => :destroy
+    belongs_to :permission, :class_name => 'Goldberg::Permission'
+    has_many :controller_actions, :order => 'name', :dependent => :destroy, :class_name => 'Goldberg::ControllerAction'
     
     validates_presence_of :name, :permission_id
     validates_uniqueness_of :name
