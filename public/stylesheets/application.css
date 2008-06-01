@@ -53,10 +53,9 @@ p {
 
 h2 {
 	text-transform:capitalize;
-	height:1.5em;
 	color:#CCFF42;
 	margin:0px;
-	padding: 0 0px 0.5em 0px;
+	padding: 0 0 0.2em 0;
 }
 
 h1 a, h2 a, h3 a {
@@ -69,7 +68,9 @@ h3 {
 	padding: 0;
 	margin:0px 0px 0.5em 0px;
 	}
-
+h4 {
+	margin: 0;
+}
 .error, .notice {
 	background-color:#E7FFA8;
 	color:#DB1600;
@@ -149,7 +150,7 @@ div#main p.screenshot a img {
 	float:left;
 	float:right;
 	width:170px;
-	margin-right:15px;	
+	margin-right:40px;	
 	position:relative;
 	left:50%;
 }
@@ -442,6 +443,10 @@ div.comment {
 	text-align: right;
 	font-size: 95%;
 }
+
+.date {
+	font-size: 90%;
+}
 .meta .author, .meta .author a {
 	color:#CCFF42;
 	text-transform:none;
@@ -662,11 +667,29 @@ div#first ul.user_list li a img {
 float: left;
 	width: 70px;
 }
-
-#sites, #sites .site, #posts, #posts .post {
+#sites, #posts, #comments {
+	margin: 0 0 20px 0;
+}
+#sites, #sites .site, #posts .post {
 	clear: both;
 }
 
+#front #sites {
+	clear: both;
+}
+#front #posts {
+	width: 49%;
+	float: left;
+	position: relative;
+	clear: none;
+}
+
+#front #comments {
+	width: 49%;
+	float: right;
+	position: relative;
+	clear: none;
+}
 #sites.tiny a img, #sites.tiny a {
 	margin: 0 1px 1px 0;
 	padding: 0;

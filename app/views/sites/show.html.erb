@@ -16,16 +16,16 @@
 
 <div id="comments">
 <h3>Comments</h3>
-<% if @site.published_comments.empty? %>
+<% if @site.comments.published.empty? %>
   <p>No comments so far</p>
 <% else %>
-  <%= render :partial => '/comments/comment', :collection => @site.published_comments %>
+  <%= render :partial => '/comments/comment', :collection => @site.comments.published %>
 <% end %>
 </div>
 <h3>New comment</h3>
 
 <% form_for :comment, @comment, :url => site_comments_url(@site), :method => :site do |f| %>
-  <%= render :partial => '/comments/form', :locals => {:f => f, :comments => @site.published_comments} %>
+  <%= render :partial => '/comments/form', :locals => {:f => f, :comments => @site.comments.published} %>
   <%= submit_tag 'Save comment' %>
 <% end %>
 </div>

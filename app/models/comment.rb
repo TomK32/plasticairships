@@ -1,11 +1,14 @@
 class Comment < ActiveRecord::Base
   belongs_to :user
-  belongs_to :post, :counter_cache => true
   belongs_to :parent_comment, :class_name => 'Comment'
 
-  attr_protected :post_id, :user_id, :published
+  attr_protected :post_id, :site_id, :user_id, :published
 
-  validates_presence_of :post_id, :body, :user_name, :user_email
+  validates_presence_of :body, :user_name, :user_email
+
+  named_scope :published, :conditions => {:published => true}
+  named_scope :unpublished, :conditions => {:published => false}
+  named_scope :recent, :order => 'id DESC'
 
   # caching :-)
   def before_validation

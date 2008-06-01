@@ -1,5 +1,3 @@
-require 'active_record/connection_adapters/postgresql_adapter'
-
 # Set the appropriate table prefix using AR's "set_table_name" 
 
 # This module is included in all Goldberg's model classes.  On load it
@@ -105,6 +103,10 @@ module Goldberg
   end
 end
 
-ActiveRecord::ConnectionAdapters::PostgreSQLAdapter.class_eval do
-  include Goldberg::PostgreSQL
+if ActiveRecord::Base.connection.class.to_s == 
+    'ActiveRecord::ConnectionAdapters::PostgreSQLAdapter'
+  require 'active_record/connection_adapters/postgresql_adapter'
+  ActiveRecord::ConnectionAdapters::PostgreSQLAdapter.class_eval do
+    include Goldberg::PostgreSQL
+  end
 end

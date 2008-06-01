@@ -1,7 +1,6 @@
 class Site < ActiveRecord::Base
   attr_protected :user_id, :published, :featured
-  has_many :comments, :class_name => 'Site::Comment', :foreign_key => 'post_id'
-  has_many :published_comments, :class_name => 'Site::Comment', :foreign_key => 'post_id', :conditions => ['comments.published = ?', true]
+  has_many :comments, :class_name => 'Site::Comment'
   belongs_to :user
   has_many :assets, :class_name => 'Site::Asset', :conditions => 'thumbnail IS NULL', :order => "site_assets.position ASC, site_assets.id ASC"
   has_one :screenshot, :class_name => 'Site::Asset', :conditions => 'thumbnail IS NULL', :order => "site_assets.position ASC, site_assets.id ASC"

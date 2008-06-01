@@ -7,15 +7,15 @@
 
 <div id="comments">
 <h3>Comments</h3>
-<% if @post.published_comments.empty? %>
+<% if @post.comments.published.empty? %>
   <p>No comments so far</p>
 <% else %>
-  <%= render :partial => '/comments/comment', :collection => @post.published_comments %>
+  <%= render :partial => '/comments/comment', :collection => @post.comments.published %>
 <% end %>
 </div>
 <h3>New comment</h3>
 
 <% form_for :comment, @comment, :url => post_comments_url(@post), :method => :post do |f| %>
-  <%= render :partial => '/comments/form', :locals => {:f => f, :comments => @post.published_comments} %>
+  <%= render :partial => '/comments/form', :locals => {:f => f, :comments => @post.comments.published} %>
   <%= submit_tag 'Save comment' %>
 <% end %>

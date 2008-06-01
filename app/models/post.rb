@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
-  has_many :comments
-  has_many :published_comments, :class_name => 'Comment', :conditions => ['comments.published = ?', true]
+  has_many :comments, :class_name => 'Post::Comment'
+
   belongs_to :user
 
   attr_protected :user_id, :published
@@ -30,7 +30,7 @@ class Post < ActiveRecord::Base
     published_at.day
   end
   def excerpt
-    return self[:body][/.{0,50}\w*?/] if self[:excerpt].blank?
+    return self[:body][/.{0,50}\w*/] + "..." if self[:excerpt].blank?
     self[:excerpt]
   end
 end

@@ -1,3 +1,4 @@
 class Site::Comment < Comment
-  belongs_to :site, :counter_cache => true
+  validates_presence_of :site_id
+  belongs_to :site, :counter_cache => 'comments_count'
 end
