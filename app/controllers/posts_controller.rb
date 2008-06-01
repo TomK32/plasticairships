@@ -19,10 +19,11 @@ class PostsController < ApplicationController
   
   def show
     if params[:id]
-      @post = Post.find(params[:id], :include => [:comments, :user])
+      @post = Post.find_by_id_and_published(params[:id], true, :include => [:comments, :user])
     else
       @post = Post.find_by_date_and_permalink(params[:year], params[:month], params[:day], params[:permalink])
     end
+    redirect_to posts_url and return unless @post
 
     respond_to do |format|
       format.html # show.html.erb

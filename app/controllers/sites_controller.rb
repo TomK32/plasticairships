@@ -21,7 +21,8 @@ class SitesController < ApplicationController
   end
 
   def show
-    @site = Site.find(params[:id], :include => [:comments, :assets])
+    @site = Site.find_by_id_and_published(params[:id], true, :include => [:comments, :assets])
+    redirect_to sites_url and return unless @site
 
     respond_to do |format|
       format.html # show.html.erb
