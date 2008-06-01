@@ -14,6 +14,13 @@
 <p><%= f.label :description, 'Description' %><br />
   <%= f.text_area :description %>
 </p>
+
+<% if current_user.moderator? %>
+<p>
+  <%= f.check_box :published %> <%= f.label :published, 'Post is published' %>
+</p>
+<% end %>
+
 <% fields_for :asset do |fa| %>
 <fieldset>
   <legend>Screenshots</legend>
