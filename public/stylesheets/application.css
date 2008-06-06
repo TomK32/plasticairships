@@ -307,7 +307,7 @@ ul.item_list li a:hover span.comment_count {
 form {
 	background-color:#B3DFE8;
 	padding:0.3em 1em 1em 1em;
-	margin: 2em 15px 0.3em 0px;
+	margin: 2em 0 0.3em 0px;
 }
 form * {
 	color: black;
