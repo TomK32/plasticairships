@@ -23,3 +23,6 @@ class Comment < ActiveRecord::Base
     "%s on %s: %s" % [self.user_name, self.created_at.to_s(:long), self.body[/.{0,40}\w*?/]]
   end
 end
+
+require 'post/comment'
+require 'site/comment'
