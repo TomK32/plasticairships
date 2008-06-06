@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_filter :current_post, :only => [:edit, :update, :destroy, :publish]
   
   def index
-    @posts = Post.find_published(10, params[:page])
+    @posts = Post.published.paginate(:per_page => 10, :page => params[:page])
     redirect_to :action => :index and return unless @posts
 
     respond_to do |format|

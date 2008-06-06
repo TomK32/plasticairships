@@ -1,7 +1,8 @@
 class Post < ActiveRecord::Base
-  has_many :comments, :class_name => 'Post::Comment'
 
+  has_many :comments, :class_name => 'Post::Comment'
   belongs_to :user
+  named_scope :published, :conditions => ['published = ? AND posts.published_at < NOW()', true], :order => 'posts.published_at DESC'
 
   attr_protected :user_id, :published
 
@@ -14,6 +15,10 @@ class Post < ActiveRecord::Base
   def self.find_by_date_and_permalink(year, month, day, permalink)
     date = Date.civil(year, month, day)
     self.find(:first, :conditions => ["posts.published_at < ? AND posts.published_at > ? AND posts.permalink", date.beginning_of_day, date.end_of_day, permalink])
+  end
+
+  def to_param
+    "#{id}-#{permalink}"
   end
 
   def before_validation
@@ -30,7 +35,8 @@ class Post < ActiveRecord::Base
     published_at.day
   end
   def excerpt
-    return self[:body][/.{0,50}\w*/] + "..." if self[:excerpt].blank?
+    return self[:body] if self[:body].length < 150
+    return self[:body][/.{0,150}\w*/] + "..." if self[:excerpt].blank?
     self[:excerpt]
   end
 end
