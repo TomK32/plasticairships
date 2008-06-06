@@ -1,8 +1,8 @@
 <% @page_title = @post.title %>
-
+<div class="post">
 <div class="meta">
-  posted by <%= link_to h(@post.user.name), user_url(@post.user) %> on <%= @post.published_at.to_s(:long) %>.<br />
-  tags: <span class="tags"><%= @site.cached_tag_list %></span>
+  posted by <%= link_to h(@post.user.name), user_url(@post.user) %> on <%= @post.published_at.to_s(:long) %><br />
+  tags: <span class="tags"><%= @post.cached_tag_list %></span>
 </div>
 <%= textilize(@post.body) %>
 
@@ -20,3 +20,4 @@
   <%= render :partial => '/comments/form', :locals => {:f => f, :comments => @post.comments.published} %>
   <%= submit_tag 'Save comment' %>
 <% end %>
+</div>

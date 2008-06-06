@@ -439,7 +439,7 @@ div.comment {
 
 
 /* meta */
-#sites .site .meta, #posts .post .meta {
+.site .meta, .post .meta {
 	text-align: right;
 	font-size: 95%;
 }

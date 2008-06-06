@@ -3,14 +3,15 @@
 <div class="body"><%= textilize(@site.description) %></div>
 
 <div class="meta">
-  submitted by <%= link_to h(@site.user.name), user_url(@site.user) %> on <%= @site.created_at.to_s(:long) %>.<br />
+  submitted by <%= link_to h(@site.user.name), user_url(@site.user) %> on <%= @site.created_at.to_s(:long) %><br />
   tags: <span class="tags"><%= @site.cached_tag_list %></span>
 </div>
 
+<h3>Screenshots</h3>
 <div id="assets">
 <% @site.assets.each do |asset| %>
   <div class="asset thumb">
-    <%= link_to image_tag(asset.public_filename(:thumb)), asset.public_filename(), :popup => true %>
+    <%= link_to image_tag(asset.public_filename(:thumb)), asset.public_filename(), :class => 'screenshot' %>
   </div>
 <% end %>
 </div>
