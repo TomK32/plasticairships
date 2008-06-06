@@ -13,6 +13,5 @@ class FrontController < ApplicationController
     end
 
     @sites = Site.find_featured_published_with_screenshots(20)
-    @content_page = Goldberg::ContentPage.find_by_name('home')
   end
 end

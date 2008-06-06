@@ -1,0 +1,13 @@
+
+<h3>Blog<%= link_to '++', new_post_url(), :title => 'submit a new blog post', :class => "plus" %></h3>
+<% cache('posts-sidebar') do %>
+  <% if latest_posts.blank? %>
+  <p>No posts so far</p>
+  <% else %>
+    <% latest_posts.each do |post| %>
+    <h4><%= link_to post.title, post_url(post) %></h4>
+    <%= textilize(post.excerpt) %>
+    <% end %>
+    <%= link_to 'more blog posts', posts_url() %>
+  <% end %>
+<% end %>

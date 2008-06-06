@@ -8,6 +8,12 @@ class ApplicationController < ActionController::Base
   
   layout "application"
 
+  before_filter :load_home_content_page
+  
+  def load_home_content_page
+    @content_page = Goldberg::ContentPage.find_by_name('home')
+  end
+
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery# :secret => '5640a70158931319b70111357a2755e2'

@@ -1,12 +1,4 @@
 
-<h2>featured sites</h2>
-<div id="sites" class="tiny">
-<% @sites.each do |site| %>
-  <%= link_to image_tag(site.screenshot.public_filename(:tiny), :alt => site.title), site_url(site), :title => [site.title, site.description].join(" - ") %>
-<% end %>
-  <%= link_to 'more', sites_url %>
-</div>
-
 <div id="posts">
   <h2>latest blogposts</h2>
   <% for post in @posts %>
