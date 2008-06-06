@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 
 <head>
@@ -70,7 +69,7 @@
 
 <%= yield %>
 </div>
-</div>
+</div> <!-- end wrap-main // main -->
 
 
 <div id="left">
@@ -80,16 +79,16 @@
   <%= render :partial => '/front/sidebar_left' %>
 <% end %>
   <%= goldberg_left_menu %>
-</div>
+</div> <!-- end left -->
 
 <div id="right">
   <% cache('sites-sidebar') do %>
     <%= render :partial => '/sites/sidebar_right' %>
   <% end %>
-  </div>
+  </div> <!-- end right -->
+</div>
+</div>
 </div> <!-- #col-main and #col-left -->
-</div>
-</div>
 
 <div id="footer">
 <ul>

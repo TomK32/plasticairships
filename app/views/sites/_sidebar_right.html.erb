@@ -1,5 +1,5 @@
 
-<div id="sites" class="tiny">
+<div id="sites-thumbs" class="tiny">
 
 <h3>Sites<%= link_to '++', new_site_url(), :title => 'submit a new site', :class => "plus" %></h3>
 
@@ -10,3 +10,4 @@
   <%= link_to image_tag(site.screenshot.public_filename(:tiny), :alt => site.title), site_url(site), :title => [site.title, site.description].join(" - ") %>
   <% end %>
 <% end %>
+</div>
