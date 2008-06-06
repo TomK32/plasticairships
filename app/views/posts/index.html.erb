@@ -1,9 +1,7 @@
 <% @page_title = 'Blog' %>
 
 <div id="posts">
-<%= will_paginate @posts %>
-
-<%= render :partial => 'post', :collection => @posts %>
-
+  <%= will_paginate @posts %>
+  <%= render :partial => 'post', :collection => @posts %>
+  <%= will_paginate @posts %>
 </div>
-<%= will_paginate @posts %>

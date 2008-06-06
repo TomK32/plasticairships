@@ -134,7 +134,7 @@ div#main p.screenshot a img {
 	padding-bottom:1em;
 }
 #main {  
-	margin:0 225px;
+	margin:0 235px 0 225px;
   position:relative;
 	left:200%;
 	overflow:hidden;
@@ -433,10 +433,6 @@ ul#sites-list li a span.comment_count {
 	clear: both;
 }
 
-div.comment {
-	margin:0px 15px 1em 0px;
-}
-
 
 /* meta */
 .site .meta, .post .meta {
@@ -671,7 +667,7 @@ float: left;
 #sites, #posts, #comments {
 	margin: 0 0 20px 0;
 }
-#sites, #sites .site, #posts .post {
+#sites .site, #posts .post {
 	clear: both;
 }
 

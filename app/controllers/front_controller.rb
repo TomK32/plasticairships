@@ -1,6 +1,12 @@
 class FrontController < ApplicationController
 
   caches_action :index
+  before_filter :load_home_content_page
+  
+  def load_home_content_page
+    @content_page = Goldberg::ContentPage.find_by_name('home')
+  end
+
 
   def index
     @posts = Post.find_published(2)
