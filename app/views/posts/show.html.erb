@@ -1,7 +1,8 @@
 <% @page_title = @post.title %>
 
 <div class="meta">
-  Posted by <%= link_to h(@post.user.name), user_url(@post.user) %> on <%= @post.published_at.to_s(:long) %>.
+  posted by <%= link_to h(@post.user.name), user_url(@post.user) %> on <%= @post.published_at.to_s(:long) %>.<br />
+  tags: <span class="tags"><%= @site.cached_tag_list %></span>
 </div>
 <%= textilize(@post.body) %>
 

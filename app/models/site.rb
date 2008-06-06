@@ -6,6 +6,7 @@ class Site < ActiveRecord::Base
   has_many :assets, :class_name => 'Site::Asset', :conditions => 'thumbnail IS NULL', :order => "site_assets.position ASC, site_assets.id ASC"
   has_one :screenshot, :class_name => 'Site::Asset', :conditions => 'thumbnail IS NULL', :order => "site_assets.position ASC, site_assets.id ASC"
 
+  acts_as_taggable
   named_scope :published, :conditions => 'published = true', :order => 'id DESC'
 
   validates_presence_of :title

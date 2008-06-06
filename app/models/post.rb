@@ -2,7 +2,10 @@ class Post < ActiveRecord::Base
 
   has_many :comments, :class_name => 'Post::Comment'
   belongs_to :user
+
+  acts_as_taggable
   named_scope :published, :conditions => ['published = ? AND posts.published_at < NOW()', true], :order => 'posts.published_at DESC'
+
 
   attr_protected :user_id, :published
 

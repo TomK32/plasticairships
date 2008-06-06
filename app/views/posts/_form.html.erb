@@ -9,6 +9,9 @@
 <p><%= f.label :body, 'Body (you can use textilize as markup in your post)' %> <br />
   <%= f.text_area :body %>
 </p>
+<p><%= f.label :tag_list, 'Tags' %><br />
+  <%= f.text_field :tag_list %>
+</p>
 <p><%= f.label :published_at, 'Publish post at' %><br />
   <%= f.datetime_select :published_at %>
 </p>
