@@ -3,7 +3,6 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  require 'goldberg_user_extensions'
   helper_method :current_user, :logged_in?
   
   layout "application"

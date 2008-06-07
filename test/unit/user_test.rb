@@ -2,7 +2,6 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class UserTest < ActiveSupport::TestCase
   fixtures :goldberg_users, :goldberg_roles
-  load_goldberg_roles
 
   def test_01_roles
     assert User.find_by_name('admin').admin?

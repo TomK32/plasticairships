@@ -67,3 +67,5 @@ Rails::Initializer.run do |config|
 end
 
 
+require 'goldberg_user_extensions'
+

@@ -5,15 +5,15 @@ class User < Goldberg::User
   has_many :assets
   
   def guest?
-    self.role_id == GOLDBERG_ROLES[:guest]
+    self.role.name.downcase == 'guest'
   end
   def member?
-    self.role_id == GOLDBERG_ROLES[:member] || self.moderator?    
+    self.role.name.downcase == 'member' || self.moderator?
   end
   def moderator?
-    self.role_id == GOLDBERG_ROLES[:moderator] || self.admin?
+    self.role.name.downcase == 'moderator' || self.admin?
   end
   def admin?
-    self.role_id == GOLDBERG_ROLES[:administrator]
+    self.role.name.downcase == 'administrator'
   end
 end
