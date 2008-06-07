@@ -7,6 +7,9 @@ class User < Goldberg::User
   def guest?
     self.role_id == GOLDBERG_ROLES[:guest]
   end
+  def member?
+    self.role_id == GOLDBERG_ROLES[:member] || self.moderator?    
+  end
   def moderator?
     self.role_id == GOLDBERG_ROLES[:moderator] || self.admin?
   end
