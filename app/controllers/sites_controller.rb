@@ -45,7 +45,7 @@ class SitesController < ApplicationController
   def create
     create_guest(params[:user]) unless logged_in?
     @site = current_user.sites.new(params[:site])
-    @site.published = params[:site][:published] current_user.moderator?
+    @site.published = params[:site][:published] if current_user.moderator?
     respond_to do |format|
       if @site.save
         unless params[:asset].blank?
@@ -64,7 +64,7 @@ class SitesController < ApplicationController
   end
 
   def update
-    @site.published = params[:site][:published] current_user.moderator?
+    @site.published = params[:site][:published] if current_user.moderator?
 
     unless params[:asset].blank? or params[:asset][:uploaded_data].blank?
       @asset = @site.assets.new(params[:asset])
