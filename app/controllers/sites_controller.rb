@@ -6,7 +6,7 @@ class SitesController < ApplicationController
   before_filter :current_site, :only => [:edit, :update, :destroy, :publish, :featured]
 
   def index
-    @sites = Site.find_published(10, params[:page])
+    @sites = Site.published.paginate(:per_page => 10, :page => params[:page])
     redirect_to :action => :index and return unless @sites or params[:page].blank?
 
     respond_to do |format|
@@ -16,8 +16,8 @@ class SitesController < ApplicationController
   end
   
   def admin
-    @sites = Site.find :all, :conditions => ['published = ?', false], :order => 'id DESC'
-    @sites += Site.find_published(25, params[:page])
+    @sites = Site.find_all_by_published(false, :limit => 10)
+    @sites += Site.published(:per_page => 10, :page => params[:page])
   end
 
   def show

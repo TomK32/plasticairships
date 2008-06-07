@@ -7,7 +7,7 @@ class Site < ActiveRecord::Base
   has_one :screenshot, :class_name => 'Site::Asset', :conditions => 'thumbnail IS NULL', :order => "site_assets.position ASC, site_assets.id ASC"
 
   acts_as_taggable
-  named_scope :published, :conditions => 'published = true', :order => 'id DESC'
+  named_scope :published, :conditions => {:published => true}, :order => 'id DESC'
 
   validates_presence_of :title
   validates_presence_of :permalink
@@ -28,15 +28,6 @@ class Site < ActiveRecord::Base
   
   def after_save
     self.thumbnail_filename = assets.first.public_filename(:thumb) if self.thumbnail_filename.blank? and ! assets.empty?
-  end
-  
-  def self.find_featured_published_with_screenshots(limit = 10)
-    self.find_all_by_published_and_featured(true, true, :include => :screenshot, :limit => limit)
-  end
-  
-  def self.find_published(per_page = 10, page = 1)
-    return false if page.to_i < 1 and page != nil
-    self.paginate :conditions => ['published = ?', true], :order => 'sites.id DESC', :per_page => per_page, :page => page
   end
 
   def to_param

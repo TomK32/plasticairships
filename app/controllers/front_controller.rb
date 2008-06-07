@@ -17,7 +17,5 @@ class FrontController < ApplicationController
     else
       @post_comments = []
     end
-
-    @sites = Site.find_featured_published_with_screenshots(20)
   end
 end
