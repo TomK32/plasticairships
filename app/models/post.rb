@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
 
-  has_many :comments, :class_name => 'Post::Comment'
+  has_many :comments, :class_name => 'Post::Comment', :dependent => :destroy
   belongs_to :user
 
   acts_as_taggable

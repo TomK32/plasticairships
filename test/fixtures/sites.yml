@@ -1,7 +1,8 @@
 example_com:
   id: 1
-  title: 'example_com'
+  title: 'example'
   url: 'http://example.com'
+  permalink: 'example-com'
   description: 'Here goes the description of this website.'
   user_id: 1
   published: true

@@ -1,7 +1,7 @@
 class Site < ActiveRecord::Base
 
   attr_protected :user_id, :published, :featured
-  has_many :comments, :class_name => 'Site::Comment'
+  has_many :comments, :class_name => 'Site::Comment', :dependent => :destroy
   belongs_to :user
   has_many :assets, :class_name => 'Site::Asset', :conditions => 'thumbnail IS NULL', :order => "site_assets.position ASC, site_assets.id ASC"
   has_one :screenshot, :class_name => 'Site::Asset', :conditions => 'thumbnail IS NULL', :order => "site_assets.position ASC, site_assets.id ASC"
@@ -17,9 +17,8 @@ class Site < ActiveRecord::Base
   validates_length_of :description, :minimum => 40
   
   def before_validation
-    self.permalink = PermalinkFu.escape(self.title) if self.permalink.blank?
-    self.thumbnail_filename = nil
-    self.thumbnail_filename = screenshot.public_filename(:thumb) unless screenshot.nil?
+    self.permalink = PermalinkFu.escape(self.url_short) if self.permalink.blank?
+    self.thumbnail_filename = self.screenshot.nil? ? nil : self.screenshot.public_filename(:thumb) 
   end
 
   def after_create
