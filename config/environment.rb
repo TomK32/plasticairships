@@ -29,10 +29,10 @@ Rails::Initializer.run do |config|
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
   # :all can be used as a placeholder for all plugins not explicitly named
-  # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
+#  config.plugins = [ :acts_as_list, :acts_as_taggable_on_steroids, :permalink_fu, :goldberg, :attachment_fu]
 
   # Add additional load paths for your own custom dirs
-  config.load_paths += %W( #{RAILS_ROOT}/app/sweepers #{RAILS_ROOT}/app/models/site)
+  config.load_paths += %W( #{RAILS_ROOT}/app/sweepers #{RAILS_ROOT}/app/models/site  #{RAILS_ROOT}/app/models/post )
 
   # Force all environments to use the same logger level
   # (by default production uses :info, the others :debug)
@@ -65,5 +65,5 @@ Rails::Initializer.run do |config|
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
 end
-GOLDBERG_ROLES = {}
-Goldberg::Role.find(:all, :select => 'id, name').each{|r| GOLDBERG_ROLES.update({r.name.downcase.to_sym => r.id})} rescue nil
+
+

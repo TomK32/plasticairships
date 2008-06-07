@@ -1,7 +1,24 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-# one:
-#   column: value
-#
-# two:
-#   column: value
+admin:
+  id: 1
+  name: "admin"
+  email: "admin@example.com"
+  website: "http://example.com/~admin"
+  role_id: 5
+moderator:
+  id: 2
+  name: "moderator"
+  email: "moderator@example.com"
+  website: "http://example.com/~moderator"
+  role_id: 4
+member:
+  id: 3
+  name: "member"
+  email: "member@example.com"
+  website: "http://example.com/~member"
+  role_id: 3
+guest:
+  id: 4
+  name: "guest"
+  email: "guest@example.com"
+  website: "http://example.com/~guest"
+  role_id: 2

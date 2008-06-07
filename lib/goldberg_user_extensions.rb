@@ -1,4 +1,9 @@
 
+GOLDBERG_ROLES = {}
+def load_goldberg_roles
+  Goldberg::Role.find(:all, :select => 'id, name').each{|r| GOLDBERG_ROLES.update({r.name.downcase.to_sym => r.id})} rescue nil
+end
+
 GUEST_ROLE_ID = 2
 module ActionController
   class Base

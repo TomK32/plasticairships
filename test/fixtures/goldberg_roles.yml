@@ -1,0 +1,36 @@
+public: 
+  name: Public
+  start_path: 
+  default_page_id: 
+  id: "1"
+  description: Members of the public who are not logged in.
+  parent_id: 
+guest: 
+  name: Guest
+  start_path: 
+  default_page_id: 
+  id: "2"
+  description: User who created an account without knowing
+  parent_id: "1"
+member: 
+  name: Member
+  start_path: 
+  default_page_id: 
+  id: "3"
+  description: regular members
+  parent_id: "2"
+moderator: 
+  name: Moderator
+  start_path: 
+  default_page_id:
+  id: "4"
+  description: Many rights, but no admin yet
+  parent_id: "3"
+admin: 
+  name: Administrator
+  start_path: 
+  default_page_id:
+  id: "5"
+  description: ""
+  parent_id: "4"
+  
