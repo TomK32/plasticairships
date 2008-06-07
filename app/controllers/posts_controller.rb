@@ -14,16 +14,12 @@ class PostsController < ApplicationController
   
   def admin
     @posts = Post.find :all, :conditions => ['published = ?', false], :order => 'id DESC'
-    @posts += Post.find_published(25, params[:page])
+    @posts += Post.published.paginate(:per_page => 20, :page => params[:page])
   end
   
   def show
-    if params[:id]
-      @post = Post.find_by_id_and_published(params[:id], true, :include => [:comments, :user])
-    else
-      @post = Post.find_by_date_and_permalink(params[:year], params[:month], params[:day], params[:permalink])
-    end
-    redirect_to posts_url and return unless @post
+    @post = Post.published.find(:first, params[:id], :include => [:comments, :user])
+    redirect_to posts_url and return if  @post.blank?
 
     respond_to do |format|
       format.html # show.html.erb
@@ -46,7 +42,7 @@ class PostsController < ApplicationController
   def create
     create_guest(params[:user]) unless logged_in?
     @post = current_user.posts.new(params[:post])
-    @post.published = true if params[:post][:published] and current_user.moderator?
+    @post.published = params[:post][:published] if current_user.moderator?
 
     respond_to do |format|
       if @post.save
@@ -69,11 +65,12 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    @post.published = params[:post][:published] if current_user.moderator?
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
         flash[:notice] = 'Post was successfully updated.'
-        format.html { redirect_to(@post) }
+        format.html { render :action => :show }
         format.xml  { head :ok }
       else
         flash[:error] = 'Post couldn\'t be updated.'
