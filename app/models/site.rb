@@ -13,6 +13,7 @@ class Site < ActiveRecord::Base
   validates_presence_of :permalink
   validates_presence_of :url
   validates_presence_of :description
+  validates_presence_of :user_id
   validates_length_of :description, :minimum => 40
   
   def before_validation
@@ -22,7 +23,6 @@ class Site < ActiveRecord::Base
   end
 
   def after_create
-    puts self.assets.inspect
     self.assets.each{|asset| asset.save! }
   end
   

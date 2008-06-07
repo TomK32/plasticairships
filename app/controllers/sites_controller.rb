@@ -48,10 +48,8 @@ class SitesController < ApplicationController
     @post.published = true if params[:post][:published] and current_user.moderator?
     respond_to do |format|
       if @site.save
-        puts @site.inspect
         unless params[:asset].blank?
           asset = @site.assets.new(params[:asset])
-          puts asset.inspect
           asset.user = current_user
           asset.save
         end
