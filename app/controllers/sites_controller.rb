@@ -53,11 +53,11 @@ class SitesController < ApplicationController
           asset.user = current_user
           asset.save
         end
-        format.html { redirect_to(@site) }
+        format.html { render :action => :view }
         format.xml  { render :xml => @site, :status => :created, :location => @site }
       else
         flash[:error] = 'Site couldn\'t be created.'
-        format.html { render :action => "new" }
+        format.html { render :action => :new }
         format.xml  { render :xml => @site.errors, :status => :unprocessable_entity }
       end
     end
