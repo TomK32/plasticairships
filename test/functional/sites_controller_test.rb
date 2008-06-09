@@ -10,7 +10,27 @@ class SitesControllerTest < ActionController::TestCase
   end
 
   def test_01_add_site_as_guest
+    sites_counter = Site.count
     get :new
+    # no (guest) user yet
+    assert_equal false, @controller.current_user
+    
+    # no success with this incomplete one
     post :create, {:title => 'my website'}
+    # with the creation of guest users we are not being redirected
+    assert_equal false, @response.redirect?
+    assert @controller.current_user.guest?
+    guest_user = @controller.current_user
+    assert_equal false, flash.empty?
+
+    # and now successfully
+    post :create, :site => {:title => 'my website',
+      :url => 'http://tomk32.de',
+      :description => 'This is my website and it\'s pretty awesome. Have a look at it.'}
+    puts assigns['site'].errors.full_messages
+    assert_equal sites_counter+1, Site.count
+    assert_not_nil assigns['site']
+    assert_equal false, assigns["site"].new_record?
+    assert_equal guest_user, @controller.current_user
   end
 end

@@ -53,7 +53,7 @@ class SitesController < ApplicationController
           asset.user = current_user
           asset.save
         end
-        format.html { render :action => :view }
+        format.html { render :action => :show }
         format.xml  { render :xml => @site, :status => :created, :location => @site }
       else
         flash[:error] = 'Site couldn\'t be created.'
