@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
 
   acts_as_taggable
-  named_scope :published, :conditions => ['published = ? AND posts.published_at < NOW()', true], :order => 'posts.published_at DESC'
+  named_scope :published, :conditions => ['published = ? AND posts.published_at < ?', true, Time.now], :order => 'posts.published_at DESC'
 
 
   attr_protected :user_id, :published

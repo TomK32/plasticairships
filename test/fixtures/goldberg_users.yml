@@ -3,22 +3,26 @@ admin:
   name: "admin"
   email: "admin@example.com"
   website: "http://example.com/~admin"
+  password: "test"
   role_id: 5
 moderator:
   id: 2
   name: "moderator"
   email: "moderator@example.com"
   website: "http://example.com/~moderator"
+  password: "test"
   role_id: 4
 member:
   id: 3
   name: "member"
   email: "member@example.com"
   website: "http://example.com/~member"
+  password: "test"
   role_id: 3
 guest:
   id: 4
   name: "guest"
   email: "guest@example.com"
   website: "http://example.com/~guest"
+  password: "test"
   role_id: 2

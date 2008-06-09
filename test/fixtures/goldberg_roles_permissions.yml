@@ -1,0 +1,20 @@
+one:
+  permission_id: "1"
+  role_id: "5"
+  id: "4"
+two:
+  permission_id: "3"
+  role_id: "1"
+  id: "6"
+three:
+  permission_id: "2"
+  role_id: "5"
+  id: "7"
+four:
+  permission_id: "4"
+  role_id: "1"
+  id: "9"
+five:
+  permission_id: "5"
+  role_id: "2"
+  id: "10"

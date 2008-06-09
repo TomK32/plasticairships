@@ -1,0 +1,18 @@
+one:
+  name: Administer site
+  id: 1
+two:
+  name: Public pages   edit
+  id: 2
+three:
+  name: Public pages   view
+  id: 3
+four:
+  name: Public actions   execute
+  id: 4
+five:
+  name: Member
+  id: 5
+six:
+  name: Moderator
+  id: 6

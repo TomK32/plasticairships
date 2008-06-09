@@ -1,40 +1,29 @@
 --- 
 - name: home
   markup_style_id: 1
-  updated_at: 2008-05-18 22:20:38 +02:00
+  updated_at: 2008-06-03 10:41:12 Z
   title: Home Page
   permission_id: 3
   id: 1
-  content: |
-    h1. Welcome to Goldberg!
+  content: |-
+    h2. Welcome
     
-    Looks like you have succeeded in getting Goldberg up and running.  Now you will probably want to customise your site.
+    plasticpilots has been awarding outstanding webdesign since 2002 and 2008 is the year to get some live into it again. Expect activity and bring in some curiosity for the ideas the new owner has.
     
-    *Very important:* The default login for the administrator is "admin", password "admin".  You must change that before you make your site public!
-    
-    h2. Administering the Site
-    
-    At the login prompt, enter an administrator username and password.  The top menu should change: a new item called "Administration" will appear.  Go there for further details.
-
+    You can "suggest a great website":/sites/new for our listings and you can also "submit a blogpost":/posts/new.
   markup_style: Textile
-  created_at: 2006-06-12 00:31:56 +02:00
+  created_at: 2006-06-12 00:31:56 Z
   content_cache: |-
-    <h1>Welcome to Goldberg!</h1>
+    <h2>Welcome</h2>
     
     
-    	<p>Looks like you have succeeded in getting Goldberg up and running.  Now you will probably want to customise your site.</p>
+    	<p>plasticpilots has been awarding outstanding webdesign since 2002 and 2008 is the year to get some live into it again. Expect activity and bring in some curiosity for the ideas the new owner has.</p>
     
     
-    	<p><strong>Very important:</strong> The default login for the administrator is &#8220;admin&#8221;, password &#8220;admin&#8221;.  You must change that before you make your site public!</p>
-    
-    
-    	<h2>Administering the Site</h2>
-    
-    
-    	<p>At the login prompt, enter an administrator username and password.  The top menu should change: a new item called &#8220;Administration&#8221; will appear.  Go there for further details.</p>
+    	<p>You can <a href="/sites/new">suggest a great website</a> for our listings and you can also <a href="/posts/new">submit a blogpost</a>.</p>
 - name: expired
   markup_style_id: 1
-  updated_at: 2008-05-18 22:20:38 +02:00
+  updated_at: 2008-05-23 21:12:09 Z
   title: Session Expired
   permission_id: 3
   id: 2
@@ -46,7 +35,7 @@
     To continue please login again.
 
   markup_style: Textile
-  created_at: 2006-06-12 00:33:14 +02:00
+  created_at: 2006-06-12 00:33:14 Z
   content_cache: |-
     <h1>Session Expired</h1>
     
@@ -57,7 +46,7 @@
     	<p>To continue please login again.</p>
 - name: notfound
   markup_style_id: 1
-  updated_at: 2008-05-18 22:20:38 +02:00
+  updated_at: 2008-05-23 21:12:09 Z
   title: Not Found!
   permission_id: 3
   id: 3
@@ -68,7 +57,7 @@
     
     Please contact your system administrator.
   markup_style: Textile
-  created_at: 2006-06-12 00:33:49 +02:00
+  created_at: 2006-06-12 00:33:49 Z
   content_cache: |-
     <h1>Not Found</h1>
     
@@ -79,7 +68,7 @@
     	<p>Please contact your system administrator.</p>
 - name: denied
   markup_style_id: 1
-  updated_at: 2008-05-18 22:20:38 +02:00
+  updated_at: 2008-05-23 21:12:09 Z
   title: Permission Denied!
   permission_id: 3
   id: 4
@@ -90,7 +79,7 @@
     
     Please contact your system administrator.
   markup_style: Textile
-  created_at: 2006-06-12 00:34:30 +02:00
+  created_at: 2006-06-12 00:34:30 Z
   content_cache: |-
     <h1>Permission Denied</h1>
     
@@ -101,7 +90,7 @@
     	<p>Please contact your system administrator.</p>
 - name: contact_us
   markup_style_id: 1
-  updated_at: 2008-05-18 22:20:38 +02:00
+  updated_at: 2008-05-23 21:12:09 Z
   title: Contact Us
   permission_id: 3
   id: 6
@@ -111,7 +100,7 @@
     Visit the Goldberg Project Homepage at "http://goldberg.rubyforge.org":http://goldberg.rubyforge.org for further information on Goldberg.  Visit the Goldberg RubyForge Project Info Page at "http://rubyforge.org/projects/goldberg":http://rubyforge.org/projects/goldberg to access the project's files and development information.
 
   markup_style: Textile
-  created_at: 2006-06-12 10:13:47 +02:00
+  created_at: 2006-06-12 10:13:47 Z
   content_cache: |-
     <h1>Contact Us</h1>
     
@@ -119,7 +108,7 @@
     	<p>Visit the Goldberg Project Homepage at <a href="http://goldberg.rubyforge.org">http://goldberg.rubyforge.org</a> for further information on Goldberg.  Visit the Goldberg RubyForge Project Info Page at <a href="http://rubyforge.org/projects/goldberg">http://rubyforge.org/projects/goldberg</a> to access the project&#8217;s files and development information.</p>
 - name: site_admin
   markup_style_id: 1
-  updated_at: 2008-05-18 22:20:38 +02:00
+  updated_at: 2008-05-23 21:12:09 Z
   title: Site Administration
   permission_id: 1
   id: 8
@@ -176,7 +165,7 @@
     Go here to view and edit the settings that determine how Goldberg operates.
 
   markup_style: Textile
-  created_at: 2006-06-21 21:32:35 +02:00
+  created_at: 2006-06-21 21:32:35 Z
   content_cache: |-
     <h1>Goldberg Setup</h1>
     
@@ -257,7 +246,7 @@
     	<p>Go here to view and edit the settings that determine how Goldberg operates.</p>
 - name: admin
   markup_style_id: 1
-  updated_at: 2008-05-18 22:20:38 +02:00
+  updated_at: 2008-05-23 21:12:09 Z
   title: Administration
   permission_id: 1
   id: 9
@@ -271,7 +260,7 @@
     You can add more menu items here to administer your application if you want, by going to "Setup, Menu Editor":/menu/setup/menus.
 
   markup_style: Textile
-  created_at: 2006-06-26 16:47:09 +02:00
+  created_at: 2006-06-26 16:47:09 Z
   content_cache: |-
     <h1>Site Administration</h1>
     
@@ -285,7 +274,7 @@
     	<p>You can add more menu items here to administer your application if you want, by going to <a href="/menu/setup/menus">Setup, Menu Editor</a>.</p>
 - name: credits
   markup_style_id: 1
-  updated_at: 2008-05-18 22:20:38 +02:00
+  updated_at: 2008-05-23 21:12:09 Z
   title: Credits and Licence
   permission_id: 3
   id: 10
@@ -347,7 +336,7 @@
     "InternetConnection":http://support.internetconnection.net/CODE_LIBRARY/Javascript_Show_Hide.shtml.
 
   markup_style: Textile
-  created_at: 2006-10-02 10:35:35 +02:00
+  created_at: 2006-10-02 10:35:35 Z
   content_cache: |-
     <h1>Credits and Licence</h1>
     
@@ -425,7 +414,7 @@
     <a href="http://support.internetconnection.net/CODE_LIBRARY/Javascript_Show_Hide.shtml">InternetConnection</a>.</p>
 - name: unconfirmed
   markup_style_id: 
-  updated_at: 2008-05-18 22:20:38 +02:00
+  updated_at: 2008-05-23 21:12:09 Z
   title: Not Permitted
   permission_id: 3
   id: 11
@@ -437,7 +426,7 @@
     If there is an issue please contact the system administrator.
 
   markup_style: Textile
-  created_at: 2007-04-01 10:37:42 +02:00
+  created_at: 2007-04-01 10:37:42 Z
   content_cache: |-
     <h1>Not Permitted</h1>
     

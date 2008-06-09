@@ -19,7 +19,7 @@
   <%= f.text_field :tag_list %>
 </p>
 
-<% if current_user.moderator? %>
+<% if current_user and current_user.moderator? %>
 <p>
   <%= f.check_box :published %> <%= f.label :published, 'Post is published' %>
 </p>

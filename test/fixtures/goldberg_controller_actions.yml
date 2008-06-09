@@ -1,175 +1,209 @@
---- 
-- name: view_default
+a:
+  name: view_default
   permission_id: 3
   id: 1
   url_to_use: 
   site_controller_id: 1
-- name: view
+b:
+  name: view
   permission_id: 3
   id: 2
   url_to_use: 
   site_controller_id: 1
-- name: list
+c:
+  name: list
   permission_id: 
   id: 3
   url_to_use: 
   site_controller_id: 7
-- name: list
+d:
+  name: list
   permission_id: 
   id: 4
   url_to_use: 
   site_controller_id: 6
-- name: login
+e:
+  name: login
   permission_id: 4
   id: 5
   url_to_use: 
   site_controller_id: 3
-- name: logout
+f:
+  name: logout
   permission_id: 4
   id: 6
   url_to_use: 
   site_controller_id: 3
-- name: link
+g:
+  name: link
   permission_id: 4
   id: 7
   url_to_use: 
   site_controller_id: 5
-- name: list
+h:
+  name: list
   permission_id: 
   id: 8
   url_to_use: 
   site_controller_id: 1
-- name: list
+i:
+  name: list
   permission_id: 
   id: 9
   url_to_use: 
   site_controller_id: 8
-- name: list
+j:
+  name: list
   permission_id: 
   id: 10
   url_to_use: 
   site_controller_id: 2
-- name: list
+k:
+  name: list
   permission_id: 
   id: 11
   url_to_use: 
   site_controller_id: 5
-- name: list
+l:
+  name: list
   permission_id: 
   id: 12
   url_to_use: 
   site_controller_id: 9
-- name: forgotten
+m:
+  name: forgotten
   permission_id: 4
   id: 13
   url_to_use: 
   site_controller_id: 3
-- name: login_failed
+n:
+  name: login_failed
   permission_id: 4
   id: 14
   url_to_use: 
   site_controller_id: 3
-- name: list
+o:
+  name: list
   permission_id: 
   id: 15
   url_to_use: 
   site_controller_id: 10
-- name: self_register
+p:
+  name: self_register
   permission_id: 4
   id: 16
   url_to_use: ""
   site_controller_id: 10
-- name: confirm_registration
+q:
+  name: confirm_registration
   permission_id: 4
   id: 17
   url_to_use: ""
   site_controller_id: 10
-- name: confirm_registration_submit
+r:
+  name: confirm_registration_submit
   permission_id: 4
   id: 18
   url_to_use: ""
   site_controller_id: 10
-- name: self_create
+s:
+  name: self_create
   permission_id: 4
   id: 19
   url_to_use: ""
   site_controller_id: 10
-- name: forgot_password
+t:
+  name: forgot_password
   permission_id: 4
   id: 20
   url_to_use: ""
   site_controller_id: 10
-- name: forgot_password_submit
+u:
+  name: forgot_password_submit
   permission_id: 4
   id: 21
   url_to_use: ""
   site_controller_id: 10
-- name: reset_password
+v:
+  name: reset_password
   permission_id: 4
   id: 22
   url_to_use: ""
   site_controller_id: 10
-- name: reset_password_submit
+w:
+  name: reset_password_submit
   permission_id: 4
   id: 23
   url_to_use: ""
   site_controller_id: 10
-- name: index
+x:
+  name: index
   permission_id: 4
   id: 24
   url_to_use: ""
   site_controller_id: 12
-- name: show
+y:
+  name: show
   permission_id: 4
   id: 25
   url_to_use: ""
   site_controller_id: 12
-- name: index
+z:
+  name: index
   permission_id: 4
   id: 26
   url_to_use: ""
   site_controller_id: 14
-- name: show
+aa:
+  name: show
   permission_id: 4
   id: 27
   url_to_use: ""
   site_controller_id: 14
-- name: new
+ab:
+  name: new
   permission_id: 4
   id: 28
   url_to_use: ""
   site_controller_id: 14
-- name: create
+ac:
+  name: create
   permission_id: 4
   id: 29
   url_to_use: ""
   site_controller_id: 14
-- name: create
+ad:
+  name: create
   permission_id: 4
   id: 30
   url_to_use: ""
   site_controller_id: 13
-- name: create
+ae:
+  name: create
   permission_id: 4
   id: 31
   url_to_use: ""
   site_controller_id: 15
-- name: create
+af:
+  name: create
   permission_id: 4
   id: 32
   url_to_use: ""
   site_controller_id: 12
-- name: new
+ag:
+  name: new
   permission_id: 4
   id: 33
   url_to_use: ""
   site_controller_id: 12
-- name: index
+ah:
+  name: index
   permission_id: 4
   id: 34
   url_to_use: ""
   site_controller_id: 13
-- name: index
+ai:
+  name: index
   permission_id: 4
   id: 35
   url_to_use: ""

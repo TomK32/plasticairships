@@ -5,9 +5,49 @@
   self_reg_confirmation_required: 
   role_id: 3
   password_salt: 
-  fullname: 
+  fullname: Thomas R. Koll
+  website: http://plastipilots.com
   id: 2
   password_changed_at: 
   password: d033e22ae348aeb5660fc2140aec35850c4da997
+  email: admin@example.com
+  confirmation_key: 
+- name: guest3
+  password_expired: 
+  start_path: 
+  self_reg_confirmation_required: 
+  role_id: 2
+  password_salt: 
+  fullname: 
+  website: 
+  id: 3
+  password_changed_at: 
+  password: QUNkbf
   email: 
+  confirmation_key: 
+- name: guest4
+  password_expired: 
+  start_path: 
+  self_reg_confirmation_required: 
+  role_id: 2
+  password_salt: 
+  fullname: 
+  website: 
+  id: 4
+  password_changed_at: 
+  password: aoQoWv
+  email: 
+  confirmation_key: 
+- name: Thomas
+  password_expired: 
+  start_path: 
+  self_reg_confirmation_required: 
+  role_id: 2
+  password_salt: 
+  fullname: 
+  website: http://tomk32.de
+  id: 5
+  password_changed_at: 
+  password: zatrQn
+  email: tomk32@gmx.de
   confirmation_key: 

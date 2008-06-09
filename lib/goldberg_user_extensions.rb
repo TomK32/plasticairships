@@ -3,16 +3,14 @@ GUEST_ROLE_ID = 2
 module ActionController
   class Base
     def current_user
+      return false unless session[:goldberg]
       begin
         @current_user ||= User.find(session[:goldberg][:user_id])
       rescue ActiveRecord::RecordNotFound => ex
-        return nil
+        return false
       end
     end
-
-    def logged_in?
-      ! current_user.nil?    
-    end
+    alias :logged_in? :current_user
 
     def create_guest(args = {})
       return if logged_in?

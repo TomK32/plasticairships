@@ -15,7 +15,7 @@
 <p><%= f.label :published_at, 'Publish post at' %><br />
   <%= f.datetime_select :published_at %>
 </p>
-<% if current_user.moderator? %>
+<% if current_user and current_user.moderator? %>
 <p>
   <%= f.check_box :published %> <%= f.label :published, 'Post is published' %>
 </p>

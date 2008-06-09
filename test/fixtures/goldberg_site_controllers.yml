@@ -1,77 +1,95 @@
---- 
-- name: goldberg/content_pages
+a:
+  name: goldberg/content_pages
   permission_id: 1
   id: 1
   builtin: 1
-- name: goldberg/controller_actions
+b:
+  name: goldberg/controller_actions
   permission_id: 1
   id: 2
   builtin: 1
-- name: goldberg/auth
+c:
+  name: goldberg/auth
   permission_id: 1
   id: 3
   builtin: 1
-- name: goldberg/menu_items
+d:
+  name: goldberg/menu_items
   permission_id: 1
   id: 5
   builtin: 1
-- name: goldberg/permissions
+e:
+  name: goldberg/permissions
   permission_id: 1
   id: 6
   builtin: 1
-- name: goldberg/roles
+f:
+  name: goldberg/roles
   permission_id: 1
   id: 7
   builtin: 1
-- name: goldberg/site_controllers
+g:
+  name: goldberg/site_controllers
   permission_id: 1
   id: 8
   builtin: 1
-- name: goldberg/system_settings
+h:
+  name: goldberg/system_settings
   permission_id: 1
   id: 9
   builtin: 1
-- name: goldberg/users
+i:
+  name: goldberg/users
   permission_id: 1
   id: 10
   builtin: 1
-- name: goldberg/roles_permissions
+j:
+  name: goldberg/roles_permissions
   permission_id: 1
   id: 11
   builtin: 1
-- name: posts
+k:
+  name: posts
   permission_id: 6
   id: 12
   builtin: 0
-- name: comments
+l:
+  name: comments
   permission_id: 6
   id: 13
   builtin: 0
-- name: sites
+m:
+  name: sites
   permission_id: 6
   id: 14
   builtin: 0
-- name: site/comments
+n:
+  name: site/comments
   permission_id: 6
   id: 15
   builtin: 0
-- name: dashboard
+o:
+  name: dashboard
   permission_id: 5
   id: 16
   builtin: 0
-- name: front
+p:
+  name: front
   permission_id: 4
   id: 18
   builtin: 0
-- name: users
+q:
+  name: users
   permission_id: 6
   id: 20
   builtin: 0
-- name: site/assets
+r:
+  name: site/assets
   permission_id: 6
   id: 21
   builtin: 0
-- name: tags
+s:
+  name: tags
   permission_id: 4
   id: 22
   builtin: 0
