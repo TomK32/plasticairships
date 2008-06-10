@@ -1,8 +1,17 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class FrontControllerTest < ActionController::TestCase
-  # Replace this with your real tests.
-  def test_truth
-    assert true
+  def setup
+    @controller = FrontController.new
+    @request    = ActionController::TestRequest.new
+    @response   = ActionController::TestResponse.new
+  end
+
+  def test_01_index
+    get :index
+    assert assigns['posts']
+    assert assigns['site_comments']
+    assert assigns['post_comments']
+    assert assigns['content_page']    
   end
 end

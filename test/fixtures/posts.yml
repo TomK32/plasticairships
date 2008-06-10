@@ -1,5 +1,6 @@
 first:
   title: First post
   body: This is the first post here. It's in *textile* and there are "links":http://example.com in here.
-  user_id: 2
-  published_at: <%= Time.now %>
+  user_id: 1
+  published: true
+  published_at: <%= Time.now.utc - 1.hour %>
