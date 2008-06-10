@@ -26,11 +26,17 @@ class SitesControllerTest < ActionController::TestCase
     # and now successfully
     post :create, :site => {:title => 'my website',
       :url => 'http://tomk32.de',
-      :description => 'This is my website and it\'s pretty awesome. Have a look at it.'}
+      :description => 'This is my website and it\'s pretty awesome. Have a look at it.',
+      :published => true,
+      :tag_list => 'tomk32,blog,germany'}
     puts assigns['site'].errors.full_messages
     assert_equal sites_counter+1, Site.count
+    assert_equal sites_counter, Site.published.count
     assert_not_nil assigns['site']
-    assert_equal false, assigns["site"].new_record?
+    site = assigns['site']
+    assert_equal false, site.new_record?
+    assert_equal false, site.published?
+    assert_equal %w(tomk32 blog germany), site.tag_list
     assert_equal guest_user, @controller.current_user
   end
 end
