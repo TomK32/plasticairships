@@ -6,10 +6,9 @@ class Post < ActiveRecord::Base
   belongs_to :user
 
   acts_as_taggable
-  named_scope :published, :conditions => ['published = ? AND posts.published_at < ?', true, Time.now], :order => 'posts.published_at DESC'
+  named_scope :published, :conditions => ['published = ? AND posts.published_at < ?', true, DateTime.now.utc], :order => 'posts.published_at DESC'
 
   validates_presence_of :published_at
-  validates_presence_of :published
   validates_presence_of :body
   validates_length_of :body, :minimum => 20
   validates_presence_of :title
