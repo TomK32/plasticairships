@@ -19,8 +19,6 @@ class SitesControllerTest < ActionController::TestCase
     post :create, :site => {:title => 'my website'}
     assert_not_nil assigns['site']
     site = assigns['site']
-    # with the creation of guest users we are not being redirected
-    assert_equal false, @response.redirect?
     # check for the correct error messages
     assert site.errors.on(:url)
     assert site.errors.on(:permalink)
@@ -35,6 +33,8 @@ class SitesControllerTest < ActionController::TestCase
       :description => 'This is my website and it\'s pretty awesome. Have a look at it.',
       :published => true,
       :tag_list => 'tomk32,blog,germany'}
+    # we are not redirected to prevent cached flash messages
+    assert_equal false, @response.redirect?
     assert_not_nil assigns['site']
     site = assigns['site']
     assert site.errors.empty?
