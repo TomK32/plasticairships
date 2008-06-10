@@ -28,7 +28,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = Post.new(:published_at => Time.now)
 
     respond_to do |format|
       format.html # new.html.erb
