@@ -15,4 +15,8 @@ module ApplicationHelper
       keywords.join(',')
     end
   end
+  
+  def content_page(name)
+    Goldberg::ContentPage.find_by_name(name)
+  end
 end
