@@ -22,16 +22,7 @@ class Post < ActiveRecord::Base
   def before_validation
     self.permalink = PermalinkFu.escape(self.title) if self.permalink.blank?
   end
-  
-  def year
-    published_at.year
-  end
-  def month
-    published_at.month
-  end
-  def day
-    published_at.day
-  end
+
   def excerpt
     return self[:body] if self[:body].length < 150
     return self[:body][/.{0,150}\w*/] + "..." if self[:excerpt].blank?
