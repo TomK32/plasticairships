@@ -12,6 +12,5 @@ class FrontControllerTest < ActionController::TestCase
     assert assigns['posts']
     assert assigns['site_comments']
     assert assigns['post_comments']
-    assert assigns['content_page']    
   end
 end
