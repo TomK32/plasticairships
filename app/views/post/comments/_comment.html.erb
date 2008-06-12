@@ -1,0 +1,9 @@
+<div class="comment" id="comment-<%= comment.id %>">
+  <div class="meta">
+    <span class="gravatar"><%= gravatar(comment.user_email, comment.user_name) %></span>
+    <span class="author"><%= comment.user_website ? link_to(comment.user_name, comment.user_website) : comment.user_name %></span> on <%= comment.created_at.to_s(:long) %>
+  </div>
+  <div class="body">
+    <%= textilize(comment.body) %>
+  </div>
+</div>

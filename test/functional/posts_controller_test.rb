@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class PostsControllerTest < ActionController::TestCase  
+class PostsControllerTest < ActionController::TestCase
   def setup
     @controller = PostsController.new
     @request    = ActionController::TestRequest.new
@@ -52,20 +52,8 @@ class PostsControllerTest < ActionController::TestCase
     assert_equal %w(big news), good_post.tag_list.sort
     assert_equal guest_user, good_post.user
   end
-
-  # comment has no user_id
-  def test_03_comment_on_post_as_unregistered
-  end
-
-  # must update user attributes
-  # comment must have user_id
-  # comment must show up on post unless it's marked as spam
-  def test_04_comment_on_post_as_guest
-  end
-
-  # comment must have user_id
-  # comment must skip spamcheck if user is moderator
-  # comment must show up on post unless it's marked as spam
-  def test_05_comment_on_post_as_member    
-  end
+  
+  # new post as member
+  # new post as moderator
+  # publish a post
 end

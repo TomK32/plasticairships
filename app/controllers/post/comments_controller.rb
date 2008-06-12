@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class Post::CommentsController < ApplicationController
   before_filter :current_post, :only => [:index, :new, :create]
   before_filter :current_comment, :only => [:show, :edit, :update]
   def index
@@ -38,12 +38,11 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        flash[:notice] = 'Comment was successfully created.'
         format.html { redirect_to(post_path(@comment.post) + "#comment-%i" % @comment.id)}
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
         flash[:error] = 'Comment couldn\'t be created.'
-        format.html { render :action => "../posts/show" }
+        format.html { render :template => 'posts/show' }
         format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
       end
     end
@@ -52,7 +51,6 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
-        flash[:notice] = 'Comment was successfully updated.'
         format.html { redirect_to(post_path(@comment.post) + "#comment-%i" % @comment.id)}
         format.xml  { head :ok }
       else
