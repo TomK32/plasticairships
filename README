@@ -25,7 +25,13 @@ Goldberg CMS features custom user roles which is a great advantage for this purp
 mkdir log
 rake db:schema:load
 rake goldberg:install
+rake db:reset
 rake goldberg:load_bootstrap
+
+=== Upgrade
+
+most likely it's just this:
+rake db:migrate
 
 === Version History
 no release yet
