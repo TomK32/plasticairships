@@ -1,9 +1,11 @@
 class Site < ActiveRecord::Base
 
   attr_protected :user_id, :published, :featured
-  has_many :comments, :class_name => 'Site::Comment', :dependent => :destroy
   belongs_to :user
-  has_many :assets, :class_name => 'Site::Asset', :conditions => 'thumbnail IS NULL', :order => "site_assets.position ASC, site_assets.id ASC"
+  belongs_to :bookmark_account
+
+  has_many :comments, :class_name => 'Site::Comment', :dependent => :destroy
+  has_many :assets, :class_name => 'Site::Asset', :conditions => 'thumbnail IS NULL', :order => "site_assets.position ASC, site_assets.id ASC", :dependent => :delete_all
   has_one :screenshot, :class_name => 'Site::Asset', :conditions => 'thumbnail IS NULL', :order => "site_assets.position ASC, site_assets.id ASC"
 
   acts_as_taggable
@@ -12,9 +14,9 @@ class Site < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :permalink
   validates_presence_of :url
-  validates_presence_of :description
+#  validates_presence_of :description
   validates_presence_of :user_id
-  validates_length_of :description, :minimum => 40
+#  validates_length_of :description, :minimum => 40
   
   def before_validation
     self.permalink = PermalinkFu.escape(self.url_short) if self.permalink.blank?

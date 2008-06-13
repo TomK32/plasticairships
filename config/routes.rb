@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :bookmark_accounts
+
 
 
   map.resources :sites, 

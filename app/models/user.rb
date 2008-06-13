@@ -1,8 +1,9 @@
 class User < Goldberg::User
-  has_many :sites
-  has_many :posts
-  has_many :comments
-  has_many :assets
+  has_many :sites, :dependent => :destroy
+  has_many :posts, :dependent => :destroy
+  has_many :comments, :dependent => :delete_all
+  has_many :assets, :dependent => :delete_all
+  has_many :bookmark_accounts, :dependent => :destroy
   
   def guest?
     self.role.name.downcase == 'guest'
