@@ -1,5 +1,4 @@
 
-GUEST_ROLE_ID = 2
 module ActionController
   class Base
     def current_user
@@ -16,12 +15,13 @@ module ActionController
       return if logged_in?
       attributes = {"name" => 'guest%i' % rand(100000), 
         "password" => Goldberg::User.random_password, 
-        "role_id" => GUEST_ROLE_ID}
+        "role_id" => Goldberg::Role.find_by_name('Guest', :select => :id).id}
       attributes.update(args) if args.is_a?(Hash)
       return if current_user
-      user = Goldberg.user = Goldberg::User.create(attributes)
+      user = Goldberg.user = Goldberg::User.create!(attributes)
       user.update_attribute :name, 'guest%i' % user.id if user.name =~ /^guest/
       Goldberg::AuthController.set_user(session, user.id)
+      user
     end
   end
 end

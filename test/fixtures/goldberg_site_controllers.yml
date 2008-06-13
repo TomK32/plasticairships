@@ -54,7 +54,7 @@ k:
   id: 12
   builtin: 0
 l:
-  name: comments
+  name: post/comments
   permission_id: 6
   id: 13
   builtin: 0

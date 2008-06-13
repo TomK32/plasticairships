@@ -1,8 +1,10 @@
 require File.dirname(__FILE__) + '/../../test_helper'
 
 class Site::AssetTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  def test_truth
-    assert true
-  end
+  
+# TODO
+# attr_protected
+# delegation of user_id and site_id to 
+# thumbnails
+
 end

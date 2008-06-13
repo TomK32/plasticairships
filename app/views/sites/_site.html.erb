@@ -4,6 +4,6 @@
   </div>
   <h3><%= link_to h(site.title), site %></h3>
 
-  <p><%= textilize(site.description) %></p>
-  <%= link_to pluralize(site.comments_count, 'comment'), site %>
+  <%= textilize(site.description) %>
+  <%= link_to pluralize(site.comments_count, 'comment'), site_path(site) + '#comments' %>
 </div>
