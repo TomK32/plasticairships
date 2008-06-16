@@ -28,7 +28,7 @@ end
 
 module Goldberg
   class User
-    validates_uniqueness_of :name, :unless => Proc.new {|record| record.name == 'guest' }
+    validates_presence_of :email
     
     def is_guest?
       name =~ /^guest/

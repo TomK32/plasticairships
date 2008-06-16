@@ -13,13 +13,16 @@ class PostsController < ApplicationController
   end
   
   def admin
-    @posts = Post.find :all, :conditions => ['published = ?', false], :order => 'id DESC'
+    @posts = Post.find_all_by_published(false, :order => 'id DESC')
     @posts += Post.published.paginate(:per_page => 20, :page => params[:page])
   end
   
   def show
-    @post = Post.published.find(:first, params[:id], :include => [:comments, :user])
-    redirect_to posts_url and return if  @post.blank?
+    begin
+      @post = Post.published.find(params[:id], :include => [:comments, :user])
+    rescue ActiveRecord::RecordNotFound => ex
+      redirect_to posts_url and return if  @post.blank?
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -40,8 +43,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    create_guest(params[:user]) unless logged_in?
-    @post = current_user.posts.new(params[:post])
+    @post = Post.new(params[:post])
+    unless logged_in?
+      @user = create_guest(params[:user])
+      render :action => :new and return if @user.new_record?
+    end
+    @post.user = current_user
     @post.published = params[:post][:published] if current_user.moderator?
 
     respond_to do |format|

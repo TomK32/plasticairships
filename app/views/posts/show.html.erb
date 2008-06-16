@@ -2,9 +2,10 @@
 <div class="post">
 <div class="meta">
   posted by <%= link_to h(@post.user.name), user_url(@post.user) %> on <%= @post.published_at.to_formatted_s(:long) %><br />
-  tags: <span class="tags"><%= link_to_tags(@post.cached_tag_list, :posts) %></span>
-</div>
-<%= textilize(@post.body) %>
+  tags: <span class="tags"><%= @post.cached_tag_list %></span>
+  </div>
+  <%= textilize(@post.excerpt) %>
+  <%= textilize(@post.body) %>
 
 <div id="comments">
 <h3>Comments</h3>

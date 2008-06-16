@@ -1,4 +1,5 @@
 <% @page_title = h(@site.title) %>
+<%= link_to @site.url_short, @site.url, :class => 'site_url' %>
 <div class="site">
 <div class="body"><%= textilize(@site.description) %></div>
 

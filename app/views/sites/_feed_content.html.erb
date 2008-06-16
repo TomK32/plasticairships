@@ -1,4 +1,4 @@
 <p>
-<%= image_tag(site.thumbnail_url(request), :style => "float:left;") %>
+<%= image_tag(site.thumbnail_url(request), :style => "float:left;") if site.thumbnail_url %>
 <%= textilize site.description %>
 </p>

@@ -17,12 +17,15 @@ class SitesController < ApplicationController
   
   def admin
     @sites = Site.find_all_by_published(false, :limit => 10)
-    @sites += Site.published(:per_page => 10, :page => params[:page])
+    @sites += Site.published.paginate(:per_page => 10, :page => params[:page])
   end
 
   def show
-    @site = Site.find_by_id_and_published(params[:id], true, :include => [:comments, :assets])
-    redirect_to sites_url and return unless @site
+    begin
+      @site = Site.published(params[:id], :include => [:comments, :user, :assets])
+    rescue ActiveRecord::RecordNotFound => ex
+      redirect_to sites_url and return unless @site
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -43,8 +46,12 @@ class SitesController < ApplicationController
   end
 
   def create
-    create_guest(params[:user]) unless logged_in?
-    @site = current_user.sites.new(params[:site])
+    @site = Site.new(params[:site])
+    unless logged_in?
+      @user = create_guest(params[:user])
+      render :action => :new and return if @user.new_record?
+    end
+    @site.user = current_user
     @site.published = params[:site][:published] if current_user.moderator?
     respond_to do |format|
       if @site.save

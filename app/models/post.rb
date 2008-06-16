@@ -24,8 +24,8 @@ class Post < ActiveRecord::Base
   end
 
   def excerpt
+    return self[:excerpt] unless self[:excerpt].blank?
     return self[:body] if self[:body].length < 150
     return self[:body][/.{0,150}\w*/] + "..." if self[:excerpt].blank?
-    self[:excerpt]
   end
 end

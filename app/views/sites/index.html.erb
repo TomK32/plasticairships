@@ -1,7 +1,7 @@
 <% @page_title = 'featured sites' %>
 
 <div id="sites">
-  <%= will_paginate @posts %>
+
   <%= render :partial => "site", :collection => @sites %>
-  <%= will_paginate @posts %>
+  <%= will_paginate @sites %>
 </div>

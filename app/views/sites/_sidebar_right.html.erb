@@ -6,7 +6,8 @@
 <% if latest_sites(14).blank? %>
 <p>No sites so far</p>
 <% else %>
-  <% latest_sites(14).each do |site| %>
+  <% latest_sites(14).each do |site| 
+    next if site.screenshot.nil? %>
   <%= link_to image_tag(site.screenshot.public_filename(:tiny), :alt => site.title), site_url(site), :title => [site.title, site.description].join(" - ") %>
   <% end %>
 <% end %>

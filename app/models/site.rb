@@ -19,7 +19,7 @@ class Site < ActiveRecord::Base
 #  validates_length_of :description, :minimum => 40
   
   def before_validation
-    self.permalink = PermalinkFu.escape(self.url_short) if self.permalink.blank?
+    self.permalink = PermalinkFu.escape(self.url_short.gsub('www.', '')) if self.permalink.blank?
     self.thumbnail_filename = self.screenshot.nil? ? nil : self.screenshot.public_filename(:thumb) 
   end
 
@@ -36,6 +36,7 @@ class Site < ActiveRecord::Base
   end
   
   def thumbnail_url(request)
+    return false if self.thumbnail_filename.blank?
     request.protocol + request.host_with_port + self.thumbnail_filename
   end
   
