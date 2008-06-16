@@ -43,7 +43,7 @@
   permission_id: 6
   id: 12
   builtin: 0
-- name: comments
+- name: post/comments
   permission_id: 6
   id: 13
   builtin: 0
@@ -54,10 +54,6 @@
 - name: site/comments
   permission_id: 6
   id: 15
-  builtin: 0
-- name: dashboard
-  permission_id: 5
-  id: 16
   builtin: 0
 - name: front
   permission_id: 4
@@ -70,8 +66,4 @@
 - name: site/assets
   permission_id: 6
   id: 21
-  builtin: 0
-- name: tags
-  permission_id: 4
-  id: 22
   builtin: 0

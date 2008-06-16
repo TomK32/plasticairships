@@ -1,6 +1,6 @@
 --- 
 - name: Public
-  updated_at: 2008-06-06 21:41:13 Z
+  updated_at: 2008-06-13 13:07:48 Z
   start_path: 
   default_page_id: 
   cache: 
@@ -9,7 +9,7 @@
   parent_id: 
   created_at: 2006-06-23 21:03:49 Z
 - name: Member
-  updated_at: 2008-06-06 21:41:14 Z
+  updated_at: 2008-06-13 13:07:48 Z
   start_path: 
   default_page_id: 
   cache: 
@@ -18,7 +18,7 @@
   parent_id: 1
   created_at: 2006-06-23 21:03:50 Z
 - name: Administrator
-  updated_at: 2008-06-06 21:41:14 Z
+  updated_at: 2008-06-13 13:07:48 Z
   start_path: /menu/admin
   default_page_id: 8
   cache: 
@@ -27,7 +27,7 @@
   parent_id: 4
   created_at: 2006-06-23 21:03:48 Z
 - name: Moderator
-  updated_at: 2008-06-06 21:41:14 Z
+  updated_at: 2008-06-13 13:07:48 Z
   start_path: ""
   default_page_id: 
   cache: 
@@ -35,3 +35,13 @@
   description: ""
   parent_id: 2
   created_at: 2008-05-18 22:27:56 Z
+- name: Guest
+  updated_at: 
+  start_path: ""
+  default_page_id: 
+  cache: 
+  id: 5
+  description: ""
+  parent_id: 1
+  created_at: 2008-05-18 22:27:56 Z
+  
